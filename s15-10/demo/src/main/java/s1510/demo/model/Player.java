@@ -11,6 +11,7 @@ import java.util.List;
 @Data
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Builder
+@AllArgsConstructor
 public class Player extends UserEntity {
 
     @Id

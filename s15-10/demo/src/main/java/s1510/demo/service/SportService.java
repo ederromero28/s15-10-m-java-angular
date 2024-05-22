@@ -1,7 +1,7 @@
 package s1510.demo.service;
 
 import org.springframework.http.ResponseEntity;
-import s1510.demo.dtos.SportDTO;
+import s1510.demo.dtos.request.SportRequest;
 import s1510.demo.model.Sport;
 
 import java.util.List;
@@ -11,8 +11,8 @@ public interface SportService {
 
     List<Sport> findAll();
     Optional<Sport> findById(Long sportId);
-    Sport create(SportDTO saveSport);
-    Sport update(Long sportId, SportDTO updateSport);
+    Sport create(SportRequest saveSport);
+    Sport update(Long sportId, SportRequest updateSport);
     ResponseEntity<Sport> delete(Long sportId);
 
     void disabled(Long id);

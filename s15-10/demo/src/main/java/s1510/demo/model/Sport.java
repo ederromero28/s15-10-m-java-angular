@@ -1,10 +1,7 @@
 package s1510.demo.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "sport")
@@ -12,6 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Sport {
 
     @Id
@@ -21,5 +19,7 @@ public class Sport {
     private String name;
     private Integer teamSize;
     private Integer rounds;
+
+    private Boolean status = true;
 
 }

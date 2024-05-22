@@ -10,10 +10,11 @@ import java.io.Serializable;
 @Setter
 public class SportDTO implements Serializable {
 
-    @NotBlank
     private String name;
     private Integer teamSize;
     private Integer rounds;
+    private Boolean status = true;
+
 
 }
 

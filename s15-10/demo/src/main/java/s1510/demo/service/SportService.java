@@ -15,5 +15,7 @@ public interface SportService {
     Sport update(Long sportId, SportDTO updateSport);
     ResponseEntity<Sport> delete(Long sportId);
 
+    void disabled(Long id);
+    void enabled(Long id);
 
 }

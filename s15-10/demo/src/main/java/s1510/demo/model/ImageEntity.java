@@ -9,24 +9,16 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @Builder
-@Table(name = "images_entities")
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class ImageEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "url")
+    @OneToOne
+    private TeamManager teamManager;
     private String url;
-
-    @Column(name = "image_id")
-    private String imageId;
-
-    @Column(name = "image_name")
-    private String imageName;
-
+    private String image_id;
+    private String image_name;
 }
-
-

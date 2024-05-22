@@ -1,22 +1,32 @@
 package s1510.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @Builder
+@Table(name = "images_entities")
+@AllArgsConstructor
+@NoArgsConstructor
 public class ImageEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "url")
     private String url;
-    private String image_id;
-    private String image_name;
+
+    @Column(name = "image_id")
+    private String imageId;
+
+    @Column(name = "image_name")
+    private String imageName;
 
 }
+
+

@@ -2,9 +2,6 @@ package s1510.demo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import s1510.demo.enums.Role;
-
-import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -19,11 +16,15 @@ public class TeamManager extends UserEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OneToOne
     private ImageEntity logo;
-    private Player[] players;
+
+/*    @OneToMany
+    private Player players;
 
     public TeamManager(String email, String password, Boolean isPresent, String name, Player[] players){
         super(email,password, Role.TEAM_MANAGER, isPresent ,name);
         this.players = players;
-    }
+    }*/
 }

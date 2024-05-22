@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import s1510.demo.dtos.request.SportRequest;
 import s1510.demo.dtos.response.SportResponse;
 import s1510.demo.model.Sport;
-import s1510.demo.service.imp.SportServiceImpl;
+import s1510.demo.service.imp.SportServiceImplementation;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +18,7 @@ import java.util.Optional;
 public class SportController {
 
     @Autowired
-    private SportServiceImpl sportService;
+    private SportServiceImplementation sportService;
 
     @GetMapping
     public List<Sport> findAll(){

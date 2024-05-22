@@ -1,6 +1,10 @@
 package s1510.demo.service.imp;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import s1510.demo.exception.ObjectNotFoundException;
@@ -12,10 +16,16 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class TeamManagerServiceImpl implements TeamManagerService {
+public class TeamManagerServiceImplementation implements TeamManagerService {
 
     @Autowired
     private TeamManagerRepository teamManagerRepository;
+
+    @Override
+    public Page<TeamManager> findByPage(int page, int size, String sortBy, String sortOrder) {
+        Pageable pageable = PageRequest.of(page -1, size, Sort.by(Sort.Direction.fromString(sortOrder), sortBy));
+        return teamManagerRepository.findAll(pageable);
+    }
 
     @Override
     public List<TeamManager> findAll() {

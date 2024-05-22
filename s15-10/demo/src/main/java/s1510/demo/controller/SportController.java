@@ -25,9 +25,9 @@ public class SportController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Sport> findById(@PathVariable Long sportId){
+    public ResponseEntity<Sport> findById(@PathVariable Long id){
 
-        Optional<Sport> sport =sportService.findById(sportId);
+        Optional<Sport> sport = sportService.findById(id);
         if (sport.isPresent()){
             return ResponseEntity.ok(sport.get());
         }
@@ -46,9 +46,24 @@ public class SportController {
         return ResponseEntity.ok(sport);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Sport> delete(@PathVariable Long id){
-        return sportService.delete(id);
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<Sport> delete(@PathVariable Long id){
+//        return sportService.delete(id);
+//    }
+
+    @DeleteMapping("/disabled/{id}")
+    public ResponseEntity<?> disabled(@PathVariable Long id){
+        sportService.disabled(id);
+        return new ResponseEntity<>("Ok", HttpStatus.OK);
+    }
+
+    @PatchMapping("/enabled/{id}")
+    public ResponseEntity<?> enabled(@PathVariable Long id){
+        sportService.enabled(id);
+        return new ResponseEntity<>("Ok", HttpStatus.OK);
     }
 
 }
+
+
+

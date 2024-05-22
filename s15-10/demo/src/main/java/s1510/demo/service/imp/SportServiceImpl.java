@@ -35,6 +35,7 @@ public class SportServiceImpl implements SportService {
         sport.setName(saveSport.getName());
         sport.setTeamSize(saveSport.getTeamSize());
         sport.setRounds(saveSport.getRounds());
+        sport.setStatus(saveSport.getStatus());
 
         return sportRepository.save(sport);
 
@@ -49,6 +50,7 @@ public class SportServiceImpl implements SportService {
         sportDB.setName(updateSport.getName());
         sportDB.setTeamSize(updateSport.getTeamSize());
         sportDB.setRounds(updateSport.getRounds());
+        sportDB.setStatus(updateSport.getStatus());
 
         return sportRepository.save(sportDB);
     }
@@ -60,5 +62,25 @@ public class SportServiceImpl implements SportService {
         }
         sportRepository.deleteById(sportId);
         return ResponseEntity.ok().body(null);
+    }
+
+    @Override
+    public void disabled(Long id) {
+        Optional<Sport> sportDB = sportRepository.findById(id);
+        if (sportDB.isPresent()){
+            Sport finalySport = sportDB.get();
+            finalySport.setStatus(Boolean.FALSE);
+            sportRepository.save(finalySport);
+        }
+    }
+
+    @Override
+    public void enabled(Long id) {
+        Optional<Sport> sportDB = sportRepository.findById(id);
+        if (sportDB.isPresent()){
+            Sport finalySport = sportDB.get();
+            finalySport.setStatus(Boolean.TRUE);
+            sportRepository.save(finalySport);
+        }
     }
 }

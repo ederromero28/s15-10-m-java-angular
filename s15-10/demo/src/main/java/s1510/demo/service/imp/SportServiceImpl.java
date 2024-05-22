@@ -3,7 +3,7 @@ package s1510.demo.service.imp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import s1510.demo.dtos.SportDTO;
+import s1510.demo.dtos.request.SportRequest;
 import s1510.demo.exception.ObjectNotFoundException;
 import s1510.demo.model.Sport;
 import s1510.demo.repository.SportRepository;
@@ -29,28 +29,27 @@ public class SportServiceImpl implements SportService {
     }
 
     @Override
-    public Sport create(SportDTO saveSport) {
+    public Sport create(SportRequest saveSport) {
 
         Sport sport =new Sport();
-        sport.setName(saveSport.getName());
-        sport.setTeamSize(saveSport.getTeamSize());
-        sport.setRounds(saveSport.getRounds());
-        sport.setStatus(saveSport.getStatus());
+        sport.setName(saveSport.name());
+        sport.setTeamSize(saveSport.teamSize());
+        sport.setRounds(saveSport.rounds());
+        sport.setStatus(true);
 
         return sportRepository.save(sport);
 
     }
 
     @Override
-    public Sport update(Long sportId, SportDTO updateSport) {
+    public Sport update(Long sportId, SportRequest updateSport) {
 
         Sport sportDB = sportRepository.findById(sportId)
                 .orElseThrow( () -> new ObjectNotFoundException("Sport no encontrado con id" + sportId));
 
-        sportDB.setName(updateSport.getName());
-        sportDB.setTeamSize(updateSport.getTeamSize());
-        sportDB.setRounds(updateSport.getRounds());
-        sportDB.setStatus(updateSport.getStatus());
+        sportDB.setName(updateSport.name());
+        sportDB.setTeamSize(updateSport.teamSize());
+        sportDB.setRounds(updateSport.rounds());
 
         return sportRepository.save(sportDB);
     }

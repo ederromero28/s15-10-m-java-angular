@@ -5,7 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import s1510.demo.dtos.SportDTO;
+import s1510.demo.dtos.request.SportRequest;
+import s1510.demo.dtos.response.SportResponse;
 import s1510.demo.model.Sport;
 import s1510.demo.service.imp.SportServiceImpl;
 
@@ -28,22 +29,19 @@ public class SportController {
     public ResponseEntity<Sport> findById(@PathVariable Long id){
 
         Optional<Sport> sport = sportService.findById(id);
-        if (sport.isPresent()){
-            return ResponseEntity.ok(sport.get());
-        }
-        return ResponseEntity.notFound().build();
+        return sport.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<Sport> create (@RequestBody @Valid SportDTO sportDTO){
+    public ResponseEntity<?> create (@RequestBody @Valid SportRequest sportDTO){
         Sport sport =sportService.create(sportDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(sport);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new SportResponse(sport));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Sport> update(@PathVariable Long id, @RequestBody @Valid SportDTO sportDTO){
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Valid SportRequest sportDTO){
         Sport sport = sportService.update(id, sportDTO);
-        return ResponseEntity.ok(sport);
+        return ResponseEntity.ok(new SportResponse(sport));
     }
 
 //    @DeleteMapping("/{id}")
@@ -54,13 +52,13 @@ public class SportController {
     @DeleteMapping("/disabled/{id}")
     public ResponseEntity<?> disabled(@PathVariable Long id){
         sportService.disabled(id);
-        return new ResponseEntity<>("Ok", HttpStatus.OK);
+        return new ResponseEntity<>("Desactivado", HttpStatus.OK);
     }
 
     @PatchMapping("/enabled/{id}")
     public ResponseEntity<?> enabled(@PathVariable Long id){
         sportService.enabled(id);
-        return new ResponseEntity<>("Ok", HttpStatus.OK);
+        return new ResponseEntity<>("Activado", HttpStatus.OK);
     }
 
 }

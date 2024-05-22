@@ -2,5 +2,7 @@ package s1510.demo.enums;
 
 public enum Role {
     ADMIN,
-    PLAYER
+    PLAYER,
+    TEAM_MANAGER,
+    USER
 }

@@ -3,5 +3,7 @@ package s1510.demo.model;
 public class Competition {
 
     private String name;
-    private String[] awards = {"FirstPLace", "SecondPLace", "ThirdPLace"};
+    private String firstPlace;
+    private String secondPlace;
+    private String thirdPlace;
 }

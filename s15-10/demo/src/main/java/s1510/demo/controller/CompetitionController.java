@@ -3,7 +3,9 @@ package s1510.demo.controller;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import s1510.demo.dtos.request.CompetitionRequest;
 import s1510.demo.model.Competition;
 import s1510.demo.service.CompetitionService;
 
@@ -22,14 +24,14 @@ class CompetitionController {
     public Competition save(
             @RequestBody
             @Valid
-            Competition resource) {
+            CompetitionRequest resource) {
         return competitionService.create(resource);
     }
 
     @PutMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Competition update(@PathVariable("id") Long id,
-                       @RequestBody Competition resource) {
+                       @RequestBody CompetitionRequest resource) {
         return competitionService.update(resource);
     }
 

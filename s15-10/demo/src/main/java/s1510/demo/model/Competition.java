@@ -1,10 +1,7 @@
 package s1510.demo.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -14,6 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Competition {
 
     @Id
@@ -26,6 +24,6 @@ public class Competition {
     private int size;
     private LocalDate dateStart;
     private LocalDate dateEnd;
-    private Award awards;
-    private Stage stages;
+//    private Award awards;
+//    private Stage stages;
 }

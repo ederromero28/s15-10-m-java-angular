@@ -1,11 +1,9 @@
 package s1510.demo.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import s1510.demo.model.Competition;
 import s1510.demo.service.CompetitionService;
 
@@ -13,12 +11,33 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/competition")
-public class CompetitionController {
+@RequestMapping("/competitions")
+class CompetitionController {
 
     @Autowired
     private CompetitionService competitionService;
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Competition save(
+            @RequestBody
+            @Valid
+            Competition resource) {
+        return competitionService.create(resource);
+    }
+
+    @PutMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Competition update(@PathVariable("id") Long id,
+                       @RequestBody Competition resource) {
+        return competitionService.update(resource);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Competition delete(@PathVariable("id") Long id) {
+        return competitionService.delete(id);
+    }
 
 
     @GetMapping
@@ -26,11 +45,9 @@ public class CompetitionController {
         return competitionService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Competition> findById(
-             @PathVariable Long id) {
-
-        Optional
+    @GetMapping(value = "/{id}")
+    public Optional<Competition> findById(
+            @PathVariable("id") Long id) {
+        return competitionService.findById(id);
     }
-
 }

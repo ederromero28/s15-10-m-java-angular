@@ -9,10 +9,10 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public abstract class CRUDServiceImpl<T,ID> implements CRUD<T,ID> {
-    protected  abstract GenericRepo<T,ID> getRepo();
+public abstract class CRUDServiceImpl<T, ID> implements CRUD<T, ID> {
+    protected abstract GenericRepo<T, ID> getRepo();
 
-    public T save(T t){
+    public T save(T t) {
         return getRepo().save(t);
     }
 
@@ -28,7 +28,7 @@ public abstract class CRUDServiceImpl<T,ID> implements CRUD<T,ID> {
 
     @Override
     public T ReadById(ID id) {
-        return   getRepo()
+        return getRepo()
                 .findById(id)
                 .orElse(null);
     }

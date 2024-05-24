@@ -3,6 +3,7 @@ package s1510.demo.model;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Getter

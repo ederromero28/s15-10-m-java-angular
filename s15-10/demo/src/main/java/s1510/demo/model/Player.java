@@ -32,11 +32,11 @@ public class Player extends UserEntity {
     @Column(name = "contact_email")
     private String contactEmail;
 
-    public Player(String email, String password,Boolean isPresent, String name,List<Award> awards, String phone, String contactEmail){
+   /* public Player(String email, String password,Boolean isPresent, String name,List<Award> awards, String phone, String contactEmail){
         super(email,password,Role.PLAYER, isPresent ,name);
         this.awards = awards;
         this.phone = phone;
         this.contactEmail = contactEmail;
-    }
+    }*/
 
 }

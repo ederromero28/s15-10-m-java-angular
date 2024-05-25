@@ -1,4 +1,5 @@
 package s1510.demo.controller;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +39,12 @@ public class MatchController {
     @GetMapping("{/id}")
     public ResponseEntity<MatchResponseDto> getMatchById(@PathVariable Integer id, @RequestBody MatchRequestDTO matchRequestDTO) {
         MatchResponseDto updatedMatch = matchService.getMatchById(id);
+        return new ResponseEntity<>(updatedMatch, HttpStatus.OK);
+    }
+
+    @PutMapping("{/id}")
+    public ResponseEntity<MatchResponseDto> updateMatch(@PathVariable Integer id, @RequestBody MatchRequestDTO matchRequestDTO) {
+        MatchResponseDto updatedMatch = matchService.updateMatch(id, matchRequestDTO);
         return new ResponseEntity<>(updatedMatch, HttpStatus.OK);
     }
 

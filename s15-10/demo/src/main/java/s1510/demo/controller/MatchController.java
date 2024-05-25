@@ -18,7 +18,6 @@ import java.util.List;
 public class MatchController {
     private final MatchService matchService;
 
-
     @Autowired
     public MatchController(MatchService matchService) {
         this.matchService = matchService;

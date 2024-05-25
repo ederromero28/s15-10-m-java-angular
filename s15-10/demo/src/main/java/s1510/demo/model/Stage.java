@@ -12,6 +12,7 @@ import s1510.demo.enums.StageType;
 @Setter
 @Builder
 public class Stage {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

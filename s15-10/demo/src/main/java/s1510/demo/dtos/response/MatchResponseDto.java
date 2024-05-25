@@ -7,9 +7,7 @@ import s1510.demo.model.Sport;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
-@FieldDefaults(level = AccessLevel.PRIVATE)
+
 public record MatchResponseDto(
         LocalDateTime startAt,
 

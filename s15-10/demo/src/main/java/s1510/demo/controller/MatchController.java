@@ -1,5 +1,6 @@
 package s1510.demo.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public class MatchController {
     }
 
     @PostMapping
-    public ResponseEntity<MatchResponseDto> createMatch(@RequestBody MatchRequestDTO matchRequestDTO) {
+    public ResponseEntity<MatchResponseDto> createMatch(@Valid @RequestBody MatchRequestDTO matchRequestDTO) {
         MatchResponseDto match = matchService.createMatch(matchRequestDTO);
         return new ResponseEntity<>(match, HttpStatus.CREATED);
 
@@ -43,7 +44,7 @@ public class MatchController {
     }
 
     @PutMapping("{/id}")
-    public ResponseEntity<MatchResponseDto> updateMatch(@PathVariable Integer id, @RequestBody MatchRequestDTO matchRequestDTO) {
+    public ResponseEntity<MatchResponseDto> updateMatch(@Valid @PathVariable Integer id, @RequestBody MatchRequestDTO matchRequestDTO) {
         MatchResponseDto updatedMatch = matchService.updateMatch(id, matchRequestDTO);
         return new ResponseEntity<>(updatedMatch, HttpStatus.OK);
     }

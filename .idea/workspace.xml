@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="08191d41-c9c8-4e14-a37b-e9994a74cce1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/config/ModelMapperConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/config/ModelMapperConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/controller/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/controller/PlayerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/dtos/request/MatchRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/dtos/request/MatchRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/model/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/model/Match.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/repository/MatchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/repository/MatchRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/service/imp/MatchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/service/imp/MatchServiceImpl.java" afterDir="false" />
+    <list default="true" id="08191d41-c9c8-4e14-a37b-e9994a74cce1" name="Changes" comment="Adding /idea to synchronize with working tree">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/model/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +31,38 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.DemoApplication.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature__matches",
+    "git-widget-placeholder": "back",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Nedder3/Desktop/s15-10-m-java-angular/s15-10/demo/pom.xml"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="DB_URL" value="postgresql://localhost:5432/tournamentdb" />
+        <env name="DB_PASSWORD" value="tournament" />
+        <env name="DB_USERNAME" value="tournament" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="s1510.demo.DemoApplication" />
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="s1510.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.DemoApplication" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -71,5 +96,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Adding /idea to synchronize with working tree" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding /idea to synchronize with working tree" />
   </component>
 </project>

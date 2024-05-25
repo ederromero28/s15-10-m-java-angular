@@ -11,7 +11,7 @@ import s1510.demo.enums.Role;
 @Entity
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Builder
 @Table(name = "admins")

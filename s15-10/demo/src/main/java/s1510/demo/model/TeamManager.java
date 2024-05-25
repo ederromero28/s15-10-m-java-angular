@@ -16,7 +16,6 @@ import java.util.List;
 @Builder
 public class TeamManager extends UserEntity{
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

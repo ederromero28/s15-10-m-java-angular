@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name="MATCHES")
 public class Match implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;

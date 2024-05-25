@@ -38,13 +38,13 @@ public class MatchController {
     }
 
     @GetMapping("{/id}")
-    public ResponseEntity<MatchResponseDto> getMatchById(@PathVariable Integer id, @RequestBody MatchRequestDTO matchRequestDTO) {
+    public ResponseEntity<MatchResponseDto> getMatchById(@PathVariable Long id, @RequestBody MatchRequestDTO matchRequestDTO) {
         MatchResponseDto updatedMatch = matchService.getMatchById(id);
         return new ResponseEntity<>(updatedMatch, HttpStatus.OK);
     }
 
     @PutMapping("{/id}")
-    public ResponseEntity<MatchResponseDto> updateMatch(@Valid @PathVariable Integer id, @RequestBody MatchRequestDTO matchRequestDTO) {
+    public ResponseEntity<MatchResponseDto> updateMatch(@Valid @PathVariable Long id, @RequestBody MatchRequestDTO matchRequestDTO) {
         MatchResponseDto updatedMatch = matchService.updateMatch(id, matchRequestDTO);
         return new ResponseEntity<>(updatedMatch, HttpStatus.OK);
     }

@@ -14,13 +14,13 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class MatchServiceImpl extends CRUDServiceImpl<Match, Integer> implements MatchService {
+public class MatchServiceImpl extends CRUDServiceImpl<Match, Long> implements MatchService {
 
     private final MatchRepository repo;
     private final GenericMapperUtil mapperUtil;
 
     @Override
-    protected GenericRepo<Match, Integer> getRepo() {
+    protected GenericRepo<Match, Long> getRepo() {
         return repo;
     }
 
@@ -55,7 +55,7 @@ public class MatchServiceImpl extends CRUDServiceImpl<Match, Integer> implements
      */
 
     @Override
-    public MatchResponseDto getMatchById(Integer id) {
+    public MatchResponseDto getMatchById(Long id) {
         Match match = repo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Match not found"));
         return mapperUtil.mapToDto(match, MatchResponseDto.class);
@@ -70,8 +70,8 @@ public class MatchServiceImpl extends CRUDServiceImpl<Match, Integer> implements
      * @author nedder3
      */
     @Override
-    public MatchResponseDto updateMatch(Integer id, MatchRequestDTO matchRequestDTO) {
-        Match existingMatch = repo.findById(id)
+    public MatchResponseDto updateMatch(Long id, MatchRequestDTO matchRequestDTO) {
+       /* Match existingMatch = repo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Match not found"));
 
         existingMatch.setStartAt(matchRequestDTO.startAt());
@@ -80,6 +80,11 @@ public class MatchServiceImpl extends CRUDServiceImpl<Match, Integer> implements
         existingMatch.setPointsTeamB(matchRequestDTO.getPointsTeamB());
 
         Match updatedMatch = repo.save(existingMatch);
-        return mapperUtil.mapToDto(updatedMatch, MatchResponseDto.class);
+        return mapperUtil.mapToDto(updatedMatch, MatchResponseDto.class);*/
+        Match match=mapperUtil.mapToEntity(matchRequestDTO,Match.class);
+        match.setId(id);
+        Match updatedMatch =repo.save(match);
+                return mapperUtil.mapToDto(updatedMatch,MatchResponseDto.class);
+
     }
 }

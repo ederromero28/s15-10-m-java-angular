@@ -6,9 +6,9 @@ import s1510.demo.model.Match;
 
 import java.util.List;
 
-public interface MatchService extends CRUD<Match, Integer> {
+public interface MatchService extends CRUD<Match, Long> {
     List<MatchResponseDto> getAllMatches();
     MatchResponseDto createMatch(MatchRequestDTO matchRequestDTO);
-    MatchResponseDto getMatchById(Integer id);
-    MatchResponseDto updateMatch(Integer id, MatchRequestDTO matchRequestDTO);
+    MatchResponseDto getMatchById(Long id);
+    MatchResponseDto updateMatch(Long id, MatchRequestDTO matchRequestDTO);
 }

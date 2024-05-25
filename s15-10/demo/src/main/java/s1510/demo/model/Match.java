@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Match implements Serializable {
+    Long id;
     LocalDateTime startAt;
     LocalDateTime endAt;
     Integer pointsTeamA;

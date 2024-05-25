@@ -18,6 +18,10 @@ public class PlayerController {
 
     private final PlayerService playerService;
 
+    public PlayerController(PlayerService playerService) {
+        this.playerService = playerService;
+    }
+
     @GetMapping
     public ResponseEntity<?> getAllPlayer(){
         ResponseEntity<List<PlayerResponse>> player = playerService.listAllPlayers();

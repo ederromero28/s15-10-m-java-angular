@@ -1,5 +1,6 @@
 package s1510.demo.service.imp;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import s1510.demo.repository.GenericRepo;
@@ -30,7 +31,7 @@ public abstract class CRUDServiceImpl<T, ID> implements CRUD<T, ID> {
     public T ReadById(ID id) {
         return getRepo()
                 .findById(id)
-                .orElse(null);
+                .orElseThrow(() -> new EntityNotFoundException("No encontrado"));
     }
 
     @Override

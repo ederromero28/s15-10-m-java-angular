@@ -4,17 +4,17 @@ import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
-@Data
+
+
 public record MatchRequestDTO(
         @NotNull(message = "La fecha de inicio no puede ser nula")
-        Date startAt,
+        LocalDateTime startAt,
         @NotNull(message = "La fecha de fin no puede ser nula")
         @FutureOrPresent(message = "La fecha de fin debe ser en el presente o futuro")
-        Date endAt,
+        LocalDateTime endAt,
         @NotNull(message = "Los puntos del equipo A no pueden ser nulos")
         @Min(value = 0, message = "Los puntos del equipo A no pueden ser negativos")
         Integer pointsTeamA,

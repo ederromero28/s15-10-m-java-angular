@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="08191d41-c9c8-4e14-a37b-e9994a74cce1" name="Changes" comment="" />
+    <list default="true" id="08191d41-c9c8-4e14-a37b-e9994a74cce1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/config/ModelMapperConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/config/ModelMapperConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/controller/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/controller/PlayerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/dtos/request/MatchRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/dtos/request/MatchRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/model/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/model/Match.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/repository/MatchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/repository/MatchRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/service/imp/MatchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/service/imp/MatchServiceImpl.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,9 +22,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2gugHYqbwSgeKlQqKBXUT6UesVs" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -26,7 +33,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "back",
+    "git-widget-placeholder": "feature__matches",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Nedder3/Desktop/s15-10-m-java-angular/s15-10/demo/pom.xml"
   }

@@ -64,6 +64,13 @@
 			<version>1.32.2</version>
 		</dependency>
 
+		<!-- modelmapper dependency-->
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>

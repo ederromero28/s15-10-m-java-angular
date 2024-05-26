@@ -1,8 +1,8 @@
 #IMAGE
 FROM maven:3.8.5-openjdk-17 AS build
+WORKDIR /s15-10/demo
 #JAR
-COPY /s15-10/demo/src /s15-10/demo/src
-COPY /s15-10/demo/pom.xml /s15-10/demo
+COPY . .
 #COMANDO DE INICIO
 RUN mvn clean package -DskipTests
 FROM openjdk:17-jdk-alpine

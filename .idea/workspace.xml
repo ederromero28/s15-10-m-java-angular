@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08191d41-c9c8-4e14-a37b-e9994a74cce1" name="Changes" comment="Adding /idea to synchronize with working tree">
+    <list default="true" id="08191d41-c9c8-4e14-a37b-e9994a74cce1" name="Changes" comment="Update on dockerfile&#10;Adding maven build commands">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/s15-10/demo/src/main/java/s1510/demo/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/s15-10/demo/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/s15-10/demo/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +32,19 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.DemoApplication.executor": "Run",
+    "Maven.demo [clean].executor": "Run",
+    "Maven.demo [install,-DskipTests].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "back",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Nedder3/Desktop/s15-10-m-java-angular/s15-10/demo/pom.xml"
   }
 }]]></component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn install -DskipTests" />
+    </option>
+  </component>
   <component name="RunManager">
     <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <envs>
@@ -72,6 +79,31 @@
       <option name="presentableId" value="Default" />
       <updated>1716552789750</updated>
     </task>
+    <task id="LOCAL-00001" summary="Minor change on Player entity">
+      <option name="closed" value="true" />
+      <created>1716677566751</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716677566751</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Updating jar image&#10;Commenting out annotation on Admin entity to avoid error">
+      <option name="closed" value="true" />
+      <created>1716678220440</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1716678220441</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Update on dockerfile&#10;Adding maven build commands">
+      <option name="closed" value="true" />
+      <created>1716683995475</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1716683995525</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -99,6 +131,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adding /idea to synchronize with working tree" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding /idea to synchronize with working tree" />
+    <MESSAGE value="Minor change on Player entity" />
+    <MESSAGE value="Updating jar image&#10;Commenting out annotation on Admin entity to avoid error" />
+    <MESSAGE value="Update on dockerfile&#10;Adding maven build commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update on dockerfile&#10;Adding maven build commands" />
   </component>
 </project>

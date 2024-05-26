@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08191d41-c9c8-4e14-a37b-e9994a74cce1" name="Changes" comment="Update on dockerfile&#10;Adding maven build commands">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/s15-10/demo/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/s15-10/demo/Dockerfile" afterDir="false" />
-    </list>
+    <list default="true" id="08191d41-c9c8-4e14-a37b-e9994a74cce1" name="Changes" comment="Merge remote-tracking branch 'origin/back' into back&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;s15-10/demo/Dockerfile" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,17 +26,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.DemoApplication.executor": "Run",
-    "Maven.demo [clean].executor": "Run",
-    "Maven.demo [install,-DskipTests].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "back",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Nedder3/Desktop/s15-10-m-java-angular/s15-10/demo/pom.xml"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.DemoApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.demo [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.demo [install,-DskipTests].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;back&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nedder3/Desktop/s15-10-m-java-angular/s15-10/demo/pom.xml&quot;
   }
-}]]></component>
+}</component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn install -DskipTests" />
@@ -103,7 +100,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716683995525</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Update on dockerfile&#10;Adding maven build commands">
+      <option name="closed" value="true" />
+      <created>1716684971415</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1716684971453</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Merge remote-tracking branch 'origin/back' into back&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;s15-10/demo/Dockerfile">
+      <option name="closed" value="true" />
+      <created>1716685475560</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1716685475636</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -134,6 +147,7 @@
     <MESSAGE value="Minor change on Player entity" />
     <MESSAGE value="Updating jar image&#10;Commenting out annotation on Admin entity to avoid error" />
     <MESSAGE value="Update on dockerfile&#10;Adding maven build commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update on dockerfile&#10;Adding maven build commands" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/back' into back&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;s15-10/demo/Dockerfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/back' into back&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;s15-10/demo/Dockerfile" />
   </component>
 </project>

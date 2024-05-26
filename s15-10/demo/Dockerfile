@@ -4,7 +4,7 @@ WORKDIR /s15-10/demo
 #JAR
 COPY . .
 #COMANDO DE INICIO
-RUN mvn clean package -DskipTests
+RUN -f /s15-10/demo/pom.xml mvn clean install -DskipTests
 FROM openjdk:17-jdk-alpine
 COPY --from=build s15-10/demo/target/demo-0.0.1-SNAPSHOT.jar demo-0.0.1-SNAPSHOT.jar
 EXPOSE 8080

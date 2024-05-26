@@ -1,6 +1,5 @@
 #IMAGE
 FROM maven:3.8.5-openjdk-17 AS build
-WORKDIR /s15-10/demo
 #JAR
 COPY . .
 #COMANDO DE INICIO

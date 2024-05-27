@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "competition")
@@ -24,6 +26,8 @@ public class Competition {
     private int size;
     private LocalDate dateStart;
     private LocalDate dateEnd;
-//    private Award awards;
-//    private Stage stages;
+    @OneToMany
+    private Set<Award> awards;
+    @OneToMany
+    private List<Stage> stages;
 }

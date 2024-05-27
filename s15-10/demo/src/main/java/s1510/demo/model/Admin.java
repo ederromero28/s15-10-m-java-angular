@@ -1,9 +1,6 @@
 package s1510.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import s1510.demo.enums.Role;
 
@@ -15,6 +12,10 @@ import s1510.demo.enums.Role;
 @Builder
 @Table(name = "admins")
 public class Admin extends UserEntity{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     public Admin(String email, String password,Boolean isPresent, String name){
         super(email,password, Role.ADMIN, isPresent,name);

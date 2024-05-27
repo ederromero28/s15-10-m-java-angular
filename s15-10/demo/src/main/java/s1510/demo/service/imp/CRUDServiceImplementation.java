@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public abstract class CRUDServiceImpl<T, ID> implements CRUD<T, ID> {
+public abstract class CRUDServiceImplementation<T, ID> implements CRUD<T, ID> {
     protected abstract GenericRepo<T, ID> getRepo();
 
     public T save(T t) {

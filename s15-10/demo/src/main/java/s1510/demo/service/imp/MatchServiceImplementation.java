@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class MatchServiceImpl extends CRUDServiceImpl<Match, Long> implements MatchService {
+public class MatchServiceImplementation extends CRUDServiceImplementation<Match, Long> implements MatchService {
 
     private final MatchRepository repo;
     private final GenericMapperUtil mapperUtil;

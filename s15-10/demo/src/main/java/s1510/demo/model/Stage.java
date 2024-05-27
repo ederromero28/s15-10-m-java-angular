@@ -21,6 +21,9 @@ public class Stage {
     private Long id;
     @Column(name = "stageType")
     private StageType stageType;
+    @ManyToOne
+    @JoinColumn(name = "competition_id", referencedColumnName = "id")
+    private Competition competitionReference;
     // 1 Stage puede tener muchos Matchs
     @OneToMany(
             fetch = FetchType.EAGER,

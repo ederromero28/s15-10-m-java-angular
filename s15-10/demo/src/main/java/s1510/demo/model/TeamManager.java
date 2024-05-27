@@ -2,7 +2,6 @@ package s1510.demo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import s1510.demo.dtos.request.TeamManagerRequest;
 import s1510.demo.enums.Role;
 
 import java.util.List;
@@ -33,7 +32,4 @@ public class TeamManager extends UserEntity{
         this.players = players;
     }
 
-    public TeamManager(TeamManagerRequest team){
-
-    }
 }

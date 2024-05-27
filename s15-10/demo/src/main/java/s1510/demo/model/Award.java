@@ -18,6 +18,9 @@ public class Award {
     @Column(name = "place")
     private String place;
     @ManyToOne
+    @JoinColumn(name = "competition_id", referencedColumnName = "id")
+    private Competition competitionReference;
+    @ManyToOne
     @JoinColumn(name = "player_id", referencedColumnName = "id")
     private Player player;
     @ManyToOne

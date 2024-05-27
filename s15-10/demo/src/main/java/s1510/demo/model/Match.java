@@ -29,4 +29,13 @@ public class Match implements Serializable {
 //    Sport sport;
 //    Comento el atributo para evitar el error
 //    Could not determine recommended JdbcType for Java type 's1510.demo.model.Sport'
+
+    // Added by Oliver:
+    // Muchos Stages pueden pertenecer en un Match
+    @ManyToOne(
+            fetch = FetchType.LAZY,
+            optional = false // Siempre tiene que haber una entidad Stage asociado a esta entidad Match
+    )
+    @JoinColumn(name = "stage_id")
+    private Stage stage;
 }

@@ -18,9 +18,9 @@ public class Stage {
     private Long id;
     @Column(name = "stageType")
     private StageType stageType;
-//    private Match[] matchs;
+    private Match[] matchs;
     @Column(name = "winner")
     private String winner;
-//    private Team teamA;
-//    private Team teamB;
+    private Team teamA;
+    private Team teamB;
 }

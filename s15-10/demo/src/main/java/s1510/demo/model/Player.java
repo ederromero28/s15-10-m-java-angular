@@ -31,6 +31,8 @@ public class Player extends UserEntity {
     private String phone;
     @Column(name = "contact_email")
     private String contactEmail;
+    @Column(name = "status")
+    private Boolean status;
 
     public Player(String email, String password,Boolean isPresent, String name,List<Award> awards, String phone, String contactEmail){
         super(email,password,Role.PLAYER, isPresent ,name);

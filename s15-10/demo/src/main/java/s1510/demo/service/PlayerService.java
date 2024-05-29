@@ -9,12 +9,12 @@ import java.util.List;
 
 public interface PlayerService {
 
-    ResponseEntity<PlayerResponse> createPlayer(PlayerRequest playerRequest, MultipartFile img);
+    PlayerResponse createPlayer(PlayerRequest playerRequest);
 
-    ResponseEntity<PlayerResponse> updatePlayer(Long playerId,PlayerRequest playerRequest);
+    PlayerResponse updatePlayer(Long playerId,PlayerRequest playerRequest);
 
-    ResponseEntity<PlayerResponse> logicDelete(Long playerId);
+    PlayerResponse logicDelete(Long playerId);
 
-    ResponseEntity<List<PlayerResponse>> listAllPlayers();
-    ResponseEntity<List<PlayerResponse>> listPlayerAvailable();
+    List<PlayerResponse> listAllPlayers();
+    List<PlayerResponse> listPlayerAvailable();
 }

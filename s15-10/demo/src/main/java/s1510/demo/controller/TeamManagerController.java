@@ -6,9 +6,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import s1510.demo.dtos.request.TeamManagerRequest;
+import s1510.demo.dtos.response.TeamManagerResponse;
 import s1510.demo.model.TeamManager;
 import s1510.demo.service.TeamManagerService;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,18 +36,23 @@ public class TeamManagerController {
 
     }
     @GetMapping
-    public List<TeamManager> findAll() {return teamManagerService.findAll();}
+    public ResponseEntity<List<TeamManagerResponse>> findAll() {
+        List<TeamManagerResponse> teams = teamManagerService.findAll();
+        return new ResponseEntity<>(teams, HttpStatus.OK);
+    }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TeamManager> findById(@PathVariable Long id){
+    public ResponseEntity<TeamManagerResponse> findById(@PathVariable Long id){
 
-        Optional<TeamManager> teamManager = teamManagerService.findById(id);
-        return teamManager.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        TeamManagerResponse teamManager = teamManagerService.findById(id);
+        return new ResponseEntity<>(teamManager, HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public ResponseEntity<TeamManager> create (@RequestBody @Valid TeamManager teamManager){
-        TeamManager team = teamManagerService.create(teamManager);
+    public ResponseEntity<TeamManagerResponse> create (@RequestPart @Valid TeamManagerRequest teamManager) {
+
+        TeamManagerResponse team = teamManagerService.create(teamManager);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(team);
     }
 

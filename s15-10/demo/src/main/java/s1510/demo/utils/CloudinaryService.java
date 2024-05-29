@@ -26,18 +26,18 @@ public class CloudinaryService {
         cloudinary = new Cloudinary(valores);
     }
 
-    public Map subirFoto(MultipartFile multipartFile) throws IOException {
-        File archivo = convetir(multipartFile);
+    public Map uploadNewImage(MultipartFile multipartFile) throws IOException {
+        File archivo = convertToFile(multipartFile);
         Map resultado = cloudinary.uploader().upload(archivo, ObjectUtils.emptyMap());
         archivo.delete();
         return resultado;
     }
 
-    public Map borrar(String id) throws IOException {
+    public Map deleteImageByImageId(String id) throws IOException {
         return cloudinary.uploader().destroy(id, ObjectUtils.emptyMap());
     }
 
-    public File convetir(MultipartFile multipartFile) throws IOException {
+    public File convertToFile(MultipartFile multipartFile) throws IOException {
         File archivo = new File(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         FileOutputStream feo = new FileOutputStream(archivo);
         feo.write(multipartFile.getBytes());

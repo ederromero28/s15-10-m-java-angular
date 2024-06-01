@@ -62,7 +62,7 @@ public class MatchServiceImplementation extends CRUDServiceImplementation<Match,
     @Override
     public MatchResponseDto getMatchById(Long id) {
         Match match = repo.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Match not found with id:"+id));
+                .orElseThrow(() -> new ResourceNotFoundException("Match not found with id:" + id));
         return mapperUtil.mapToDto(match, MatchResponseDto.class);
     }
 
@@ -80,7 +80,7 @@ public class MatchServiceImplementation extends CRUDServiceImplementation<Match,
                 .orElseThrow(() -> new ResourceNotFoundException("Match not found with id: " + id));
 
         Sport sport = sportRepository.findById(matchRequestDTO.sportId())
-                        .orElseThrow(()->new ResourceNotFoundException("Sport not found with id: "+id));
+                .orElseThrow(() -> new ResourceNotFoundException("Sport not found with id: " + id));
 
         existingMatch.setStartAt(matchRequestDTO.startAt());
         existingMatch.setEndAt(matchRequestDTO.endAt());

@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorDTO> handleBadRequestException(BadRequestException ex, WebRequest request) {
         ErrorDTO errorDTO = new ErrorDTO(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDTO, HttpStatus.BAD_REQUEST);
-    }git 
+    }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDTO> handleGlobalException(Exception ex, WebRequest request) {

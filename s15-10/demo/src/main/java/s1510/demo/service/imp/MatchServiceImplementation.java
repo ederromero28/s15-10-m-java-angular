@@ -4,9 +4,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import s1510.demo.dtos.request.MatchRequestDTO;
 import s1510.demo.dtos.response.MatchResponseDto;
+import s1510.demo.exception.ResourceNotFoundException;
 import s1510.demo.model.Match;
+import s1510.demo.model.Sport;
 import s1510.demo.repository.GenericRepo;
 import s1510.demo.repository.MatchRepository;
+import s1510.demo.repository.SportRepository;
 import s1510.demo.service.MatchService;
 import s1510.demo.utils.GenericMapperUtil;
 
@@ -18,6 +21,8 @@ public class MatchServiceImplementation extends CRUDServiceImplementation<Match,
 
     private final MatchRepository repo;
     private final GenericMapperUtil mapperUtil;
+
+    private final SportRepository sportRepository;
 
     @Override
     protected GenericRepo<Match, Long> getRepo() {
@@ -57,7 +62,7 @@ public class MatchServiceImplementation extends CRUDServiceImplementation<Match,
     @Override
     public MatchResponseDto getMatchById(Long id) {
         Match match = repo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Match not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Match not found with id:"+id));
         return mapperUtil.mapToDto(match, MatchResponseDto.class);
     }
 
@@ -71,20 +76,20 @@ public class MatchServiceImplementation extends CRUDServiceImplementation<Match,
      */
     @Override
     public MatchResponseDto updateMatch(Long id, MatchRequestDTO matchRequestDTO) {
-       /* Match existingMatch = repo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Match not found"));
+        Match existingMatch = repo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Match not found with id: " + id));
+
+        Sport sport = sportRepository.findById(matchRequestDTO.sportId())
+                        .orElseThrow(()->new ResourceNotFoundException("Sport not found with id: "+id));
 
         existingMatch.setStartAt(matchRequestDTO.startAt());
         existingMatch.setEndAt(matchRequestDTO.endAt());
-        existingMatch.setPointsTeamA(matchRequestDTO.getPointsTeamB());
-        existingMatch.setPointsTeamB(matchRequestDTO.getPointsTeamB());
+        existingMatch.setPointsTeamA(matchRequestDTO.pointsTeamA());
+        existingMatch.setPointsTeamB(matchRequestDTO.pointsTeamB());
+        existingMatch.setSport(sport);
 
         Match updatedMatch = repo.save(existingMatch);
-        return mapperUtil.mapToDto(updatedMatch, MatchResponseDto.class);*/
-        Match match=mapperUtil.mapToEntity(matchRequestDTO,Match.class);
-        match.setId(id);
-        Match updatedMatch =repo.save(match);
-                return mapperUtil.mapToDto(updatedMatch,MatchResponseDto.class);
+        return mapperUtil.mapToDto(updatedMatch, MatchResponseDto.class);
 
     }
 }

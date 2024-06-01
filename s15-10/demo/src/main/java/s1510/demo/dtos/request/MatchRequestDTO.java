@@ -20,7 +20,7 @@ public record MatchRequestDTO(
         Integer pointsTeamA,
         @NotNull(message = "Los puntos del equipo B no pueden ser nulos")
         @Min(value = 0, message = "Los puntos del equipo B no pueden ser negativos")
-        Integer getPointsTeamB,
+        Integer pointsTeamB,
         @NotNull(message = "El ID del deporte no puede ser nulo")
         @Positive(message = "El ID del deporte debe ser un número positivo")
         Long sportId) {

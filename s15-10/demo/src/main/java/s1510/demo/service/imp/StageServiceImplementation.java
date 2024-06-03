@@ -1,18 +1,20 @@
 package s1510.demo.service.imp;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import s1510.demo.dtos.request.StageRequest;
 import s1510.demo.dtos.response.StageResponse;
 import s1510.demo.model.Stage;
 import s1510.demo.repository.StageRepository;
 import s1510.demo.service.StageService;
-import s1510.demo.utils.GenericMapperUtil;
+import s1510.demo.helpers.GenericMapperUtil;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Profile(value = {"dev", "prod", "test"})
 @RequiredArgsConstructor
 public class StageServiceImplementation implements StageService {
 

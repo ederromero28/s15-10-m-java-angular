@@ -2,6 +2,7 @@ package s1510.demo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.context.annotation.Profile;
 import s1510.demo.enums.Role;
 
 import java.io.Serializable;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @EqualsAndHashCode
 @Entity
+@Profile(value = {"dev", "prod", "test"})
 @Data
 @Builder
 @AllArgsConstructor
@@ -46,7 +48,7 @@ public class TeamManager implements Serializable {
                        String name,
                        ImageEntity logo,
                        List<Award> awards,
-                       List<Player> players){
+                       List<Player> players) {
 
         this.email = email;
         this.password = password;

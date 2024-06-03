@@ -1,4 +1,4 @@
-package s1510.demo.utils;
+package s1510.demo.helpers;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;

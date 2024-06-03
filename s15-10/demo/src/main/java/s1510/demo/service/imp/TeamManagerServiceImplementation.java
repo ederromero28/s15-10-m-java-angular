@@ -2,6 +2,7 @@ package s1510.demo.service.imp;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -18,13 +19,14 @@ import s1510.demo.model.TeamManager;
 import s1510.demo.repository.PlayerRepository;
 import s1510.demo.repository.TeamManagerRepository;
 import s1510.demo.service.TeamManagerService;
-import s1510.demo.utils.CloudinaryService;
+import s1510.demo.helpers.CloudinaryService;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 @Service
+@Profile(value = {"dev", "prod", "test"})
 public class TeamManagerServiceImplementation implements TeamManagerService {
 
     @Autowired
@@ -37,7 +39,7 @@ public class TeamManagerServiceImplementation implements TeamManagerService {
     @Override
     public Page<TeamManager> findByPage(int page, int size, String sortBy, String sortOrder) {
 
-        Pageable pageable = PageRequest.of(page -1, size, Sort.by(Sort.Direction.fromString(sortOrder), sortBy));
+        Pageable pageable = PageRequest.of(page - 1, size, Sort.by(Sort.Direction.fromString(sortOrder), sortBy));
 
         return teamManagerRepository.findAll(pageable);
 
@@ -55,7 +57,7 @@ public class TeamManagerServiceImplementation implements TeamManagerService {
     public TeamManagerResponse findById(Long teamManagerId) {
 
         TeamManager teamFound = teamManagerRepository.findById(teamManagerId)
-                .orElseThrow(() ->new ObjectNotFoundException("Team no encontrado con el id"+ teamManagerId));
+                .orElseThrow(() -> new ObjectNotFoundException("Team no encontrado con el id" + teamManagerId));
 
         return new TeamManagerResponse(teamFound);
     }
@@ -81,7 +83,7 @@ public class TeamManagerServiceImplementation implements TeamManagerService {
     public TeamManagerResponse update(Long teamManagerId, TeamManagerRequest teamManager) {
 
         TeamManager teamM = teamManagerRepository.findById(teamManagerId)
-                        .orElseThrow( () -> new ObjectNotFoundException("Team Manager no encontrado con id" + teamManagerId));
+                .orElseThrow(() -> new ObjectNotFoundException("Team Manager no encontrado con id" + teamManagerId));
 
         teamM.setName(teamManager.name());
         teamM.setEmail(teamManager.email());
@@ -110,7 +112,7 @@ public class TeamManagerServiceImplementation implements TeamManagerService {
         team.setLogo(newImage);
         teamManagerRepository.save(team);
 
-        return  new TeamManagerResponse(team);
+        return new TeamManagerResponse(team);
 
     }
 
@@ -119,7 +121,7 @@ public class TeamManagerServiceImplementation implements TeamManagerService {
     public TeamManagerResponse delete(Long teamManagerId) {
 
         TeamManager team = teamManagerRepository.findById(teamManagerId)
-                .orElseThrow(() ->new ObjectNotFoundException("Team no encontrado con el id" + teamManagerId));
+                .orElseThrow(() -> new ObjectNotFoundException("Team no encontrado con el id" + teamManagerId));
 
         teamManagerRepository.delete(team);
 

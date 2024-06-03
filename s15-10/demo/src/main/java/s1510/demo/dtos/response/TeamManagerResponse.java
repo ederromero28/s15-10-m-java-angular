@@ -1,8 +1,11 @@
 package s1510.demo.dtos.response;
 
+import org.springframework.context.annotation.Profile;
 import s1510.demo.model.TeamManager;
 
 import java.util.List;
+
+@Profile(value = {"dev", "prod", "test"})
 
 public record TeamManagerResponse(Long id,
                                   String name,
@@ -11,7 +14,7 @@ public record TeamManagerResponse(Long id,
                                   ImageEntityResponse image,
                                   List<PlayerResponse> players) {
 
-    public TeamManagerResponse(TeamManager teamManager, List<String> awards){
+    public TeamManagerResponse(TeamManager teamManager, List<String> awards) {
         this(teamManager.getId(),
                 teamManager.getName(),
                 teamManager.getEmail(),

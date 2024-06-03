@@ -3,6 +3,7 @@ package s1510.demo.controller;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@Profile(value = {"dev", "prod", "test"})
 @RequestMapping("/teammanager")
 public class TeamManagerController {
 
@@ -32,14 +34,15 @@ public class TeamManagerController {
     public ResponseEntity<?> listTeamManager(@RequestParam(defaultValue = "1") int page,
                                              @RequestParam(defaultValue = "10") int size,
                                              @RequestParam(defaultValue = "id") String sortBy,
-                                             @RequestParam(defaultValue = "ASC") String sortOrder){
+                                             @RequestParam(defaultValue = "ASC") String sortOrder) {
 
-        Page<TeamManager> teamManagers = teamManagerService.findByPage(page,size,sortBy,sortOrder);
+        Page<TeamManager> teamManagers = teamManagerService.findByPage(page, size, sortBy, sortOrder);
 
         return new ResponseEntity<>(teamManagers, HttpStatus.OK);
 
 
     }
+
     @GetMapping
     public ResponseEntity<List<TeamManagerResponse>> findAll() {
 
@@ -50,7 +53,7 @@ public class TeamManagerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TeamManagerResponse> findById(@PathVariable @NotBlank Long id){
+    public ResponseEntity<TeamManagerResponse> findById(@PathVariable @NotBlank Long id) {
 
         TeamManagerResponse teamManager = teamManagerService.findById(id);
 
@@ -59,7 +62,7 @@ public class TeamManagerController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<TeamManagerResponse> create (@RequestPart @Valid TeamManagerRequest teamManager) {
+    public ResponseEntity<TeamManagerResponse> create(@RequestPart @Valid TeamManagerRequest teamManager) {
 
         TeamManagerResponse team = teamManagerService.create(teamManager);
 
@@ -73,11 +76,11 @@ public class TeamManagerController {
 
         BufferedImage entry = ImageIO.read(file.getInputStream());
 
-        if (entry == null){
+        if (entry == null) {
             throw new FileNotExistException(String.format("La imagen ingresada no es valida"));
         }
 
-        TeamManagerResponse response = teamManagerService.updateLogo(teamId,file);
+        TeamManagerResponse response = teamManagerService.updateLogo(teamId, file);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
 

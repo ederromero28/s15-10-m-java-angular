@@ -2,12 +2,14 @@ package s1510.demo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
 @Entity
+@Profile(value = {"dev", "prod", "test"})
 @Table(name = "COMPETITIONS")
 @AllArgsConstructor
 @NoArgsConstructor

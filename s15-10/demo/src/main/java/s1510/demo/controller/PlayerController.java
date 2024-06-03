@@ -2,6 +2,7 @@ package s1510.demo.controller;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
+@Profile(value = {"dev", "prod", "test"})
 @RequiredArgsConstructor
 @RequestMapping("/player")
 public class PlayerController {
@@ -37,7 +39,7 @@ public class PlayerController {
     public ResponseEntity<PlayerResponse> updatePlayer(@PathVariable @NotBlank Long playerId,
                                                        @RequestBody PlayerRequest playerRequest) {
 
-        PlayerResponse newPlayer = playerService.updatePlayer(playerId,playerRequest);
+        PlayerResponse newPlayer = playerService.updatePlayer(playerId, playerRequest);
 
         return new ResponseEntity<>(newPlayer, HttpStatus.OK);
 
@@ -76,7 +78,7 @@ public class PlayerController {
 
         BufferedImage entry = ImageIO.read(file.getInputStream());
 
-        if (entry == null){
+        if (entry == null) {
             throw new FileNotExistException(String.format("La imagen ingresada no es valida"));
         }
 
@@ -88,7 +90,7 @@ public class PlayerController {
 
     @PutMapping("/update_team")
     public ResponseEntity<PlayerResponse> updateTeam(@RequestParam Long teamId,
-                                                     @RequestParam Long playerId){
+                                                     @RequestParam Long playerId) {
 
         PlayerResponse playerUpdate = playerService.updateTeam(playerId, teamId);
 

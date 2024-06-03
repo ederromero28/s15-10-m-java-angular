@@ -1,6 +1,7 @@
 package s1510.demo.service.imp;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import s1510.demo.dtos.request.SportRequest;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Profile(value = {"dev", "prod", "test"})
 public class SportServiceImplementation implements SportService {
 
     @Autowired
@@ -31,7 +33,7 @@ public class SportServiceImplementation implements SportService {
     @Override
     public Sport create(SportRequest saveSport) {
 
-        Sport sport =new Sport();
+        Sport sport = new Sport();
         sport.setName(saveSport.name());
         sport.setTeamSize(saveSport.teamSize());
         sport.setRounds(saveSport.rounds());
@@ -45,7 +47,7 @@ public class SportServiceImplementation implements SportService {
     public Sport update(Long sportId, SportRequest updateSport) {
 
         Sport sportDB = sportRepository.findById(sportId)
-                .orElseThrow( () -> new ObjectNotFoundException("Sport no encontrado con id" + sportId));
+                .orElseThrow(() -> new ObjectNotFoundException("Sport no encontrado con id" + sportId));
 
         sportDB.setName(updateSport.name());
         sportDB.setTeamSize(updateSport.teamSize());
@@ -56,7 +58,7 @@ public class SportServiceImplementation implements SportService {
 
     @Override
     public ResponseEntity<Sport> delete(Long sportId) {
-        if (sportRepository.findById(sportId).isEmpty()){
+        if (sportRepository.findById(sportId).isEmpty()) {
             return ResponseEntity.badRequest().body(null);
         }
         sportRepository.deleteById(sportId);
@@ -66,7 +68,7 @@ public class SportServiceImplementation implements SportService {
     @Override
     public void disabled(Long id) {
         Optional<Sport> sportDB = sportRepository.findById(id);
-        if (sportDB.isPresent()){
+        if (sportDB.isPresent()) {
             Sport finalySport = sportDB.get();
             finalySport.setStatus(Boolean.FALSE);
             sportRepository.save(finalySport);
@@ -76,7 +78,7 @@ public class SportServiceImplementation implements SportService {
     @Override
     public void enabled(Long id) {
         Optional<Sport> sportDB = sportRepository.findById(id);
-        if (sportDB.isPresent()){
+        if (sportDB.isPresent()) {
             Sport finalySport = sportDB.get();
             finalySport.setStatus(Boolean.TRUE);
             sportRepository.save(finalySport);

@@ -2,6 +2,7 @@ package s1510.demo.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@Profile(value = {"dev", "prod", "test"})
 @RequestMapping("/competitions")
 class CompetitionController {
 
@@ -31,7 +33,7 @@ class CompetitionController {
     @PutMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Competition update(@PathVariable("id") Long id,
-                       @RequestBody CompetitionRequest resource) {
+                              @RequestBody CompetitionRequest resource) {
         return competitionService.update(resource);
     }
 

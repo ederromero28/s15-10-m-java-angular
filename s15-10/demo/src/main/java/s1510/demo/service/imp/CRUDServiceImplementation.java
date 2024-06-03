@@ -2,6 +2,7 @@ package s1510.demo.service.imp;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import s1510.demo.repository.GenericRepo;
 import s1510.demo.service.CRUD;
@@ -9,6 +10,7 @@ import s1510.demo.service.CRUD;
 import java.util.List;
 
 @Service
+@Profile(value = {"dev", "prod", "test"})
 @RequiredArgsConstructor
 public abstract class CRUDServiceImplementation<T, ID> implements CRUD<T, ID> {
     protected abstract GenericRepo<T, ID> getRepo();

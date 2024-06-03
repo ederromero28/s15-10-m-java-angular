@@ -1,4 +1,4 @@
-package s1510.demo.utils;
+package s1510.demo.helpers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;

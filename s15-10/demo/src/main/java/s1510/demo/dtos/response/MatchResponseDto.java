@@ -1,13 +1,12 @@
 package s1510.demo.dtos.response;
 
-import jakarta.validation.constraints.NotNull;
-import lombok.*;
-import lombok.experimental.FieldDefaults;
+
+import org.springframework.context.annotation.Profile;
 import s1510.demo.model.Sport;
 
 import java.time.LocalDateTime;
 
-
+@Profile(value = {"dev", "prod", "test"})
 public record MatchResponseDto(
         LocalDateTime startAt,
 

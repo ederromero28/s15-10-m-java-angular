@@ -2,6 +2,7 @@ package s1510.demo.service.imp;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import s1510.demo.dtos.request.CompetitionRequest;
 import s1510.demo.model.Competition;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Profile(value = {"dev", "prod", "test"})
 @RequiredArgsConstructor
 public class CompetitionServiceImplementation implements CompetitionService {
 
@@ -55,9 +57,6 @@ public class CompetitionServiceImplementation implements CompetitionService {
     public Optional<Competition> findById(Long competitionId) {
         return competitionRepository.findById(competitionId);
     }
-
-
-
 
 
 }

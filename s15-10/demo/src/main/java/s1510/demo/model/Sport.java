@@ -2,10 +2,12 @@ package s1510.demo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.context.annotation.Profile;
 
 import java.util.List;
 
 @Entity
+@Profile(value = {"dev", "prod", "test"})
 @Table(name = "SPORTS")
 @AllArgsConstructor
 @NoArgsConstructor

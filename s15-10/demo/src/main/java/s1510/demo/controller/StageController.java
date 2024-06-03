@@ -2,6 +2,7 @@ package s1510.demo.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@Profile(value= {"dev","prod","test"})
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class StageController {

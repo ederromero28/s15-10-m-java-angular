@@ -2,8 +2,10 @@ package s1510.demo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.context.annotation.Profile;
 
 @Entity
+@Profile(value = {"dev", "prod", "test"})
 @Data
 @Builder
 @AllArgsConstructor

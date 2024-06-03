@@ -1,5 +1,6 @@
 package s1510.demo.handler;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @RestControllerAdvice
+@Profile(value = {"dev", "prod", "test"})
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
@@ -35,7 +37,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(FileNotExistException.class)
-    public ResponseEntity<ErrorDTO> handleFileNotExistException(FileNotExistException ex, WebRequest request){
+    public ResponseEntity<ErrorDTO> handleFileNotExistException(FileNotExistException ex, WebRequest request) {
         ErrorDTO errorDTO = new ErrorDTO(LocalDateTime.now(), "File not exist exception", request.getDescription(false));
         return new ResponseEntity<>(errorDTO, HttpStatus.NOT_ACCEPTABLE);
     }

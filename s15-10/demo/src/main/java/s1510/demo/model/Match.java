@@ -3,6 +3,7 @@ package s1510.demo.model;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.springframework.context.annotation.Profile;
 
 
 import java.io.Serializable;
@@ -16,7 +17,8 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-@Table(name="MATCHES")
+@Profile(value = {"dev", "prod", "test"})
+@Table(name = "MATCHES")
 public class Match implements Serializable {
 
     @Id

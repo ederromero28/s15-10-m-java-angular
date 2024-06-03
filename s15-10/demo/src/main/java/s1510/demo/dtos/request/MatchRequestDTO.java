@@ -4,9 +4,11 @@ import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDateTime;
 
+@Profile(value = {"dev", "prod", "test"})
 
 
 public record MatchRequestDTO(

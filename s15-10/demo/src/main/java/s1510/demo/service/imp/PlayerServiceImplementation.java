@@ -2,6 +2,7 @@ package s1510.demo.service.imp;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import s1510.demo.dtos.request.PlayerRequest;
@@ -13,13 +14,14 @@ import s1510.demo.model.TeamManager;
 import s1510.demo.repository.PlayerRepository;
 import s1510.demo.repository.TeamManagerRepository;
 import s1510.demo.service.PlayerService;
-import s1510.demo.utils.CloudinaryService;
+import s1510.demo.helpers.CloudinaryService;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 @Service
+@Profile(value = {"dev", "prod", "test"})
 @RequiredArgsConstructor
 public class PlayerServiceImplementation implements PlayerService {
 

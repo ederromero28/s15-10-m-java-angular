@@ -1,6 +1,9 @@
 package s1510.demo.exception;
 
-public class ObjectNotFoundException extends RuntimeException{
+import org.springframework.context.annotation.Profile;
+
+@Profile(value = {"dev", "prod", "test"})
+public class ObjectNotFoundException extends RuntimeException {
 
     public ObjectNotFoundException() {
     }

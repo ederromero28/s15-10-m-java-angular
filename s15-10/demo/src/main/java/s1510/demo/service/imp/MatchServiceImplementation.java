@@ -1,6 +1,7 @@
 package s1510.demo.service.imp;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import s1510.demo.dtos.request.MatchRequestDTO;
 import s1510.demo.dtos.response.MatchResponseDto;
@@ -11,11 +12,12 @@ import s1510.demo.repository.GenericRepo;
 import s1510.demo.repository.MatchRepository;
 import s1510.demo.repository.SportRepository;
 import s1510.demo.service.MatchService;
-import s1510.demo.utils.GenericMapperUtil;
+import s1510.demo.helpers.GenericMapperUtil;
 
 import java.util.List;
 
 @Service
+@Profile(value = {"dev", "prod", "test"})
 @RequiredArgsConstructor
 public class MatchServiceImplementation extends CRUDServiceImplementation<Match, Long> implements MatchService {
 

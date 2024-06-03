@@ -2,12 +2,14 @@ package s1510.demo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.context.annotation.Profile;
 import s1510.demo.enums.Role;
 
 import java.io.Serializable;
 
 @EqualsAndHashCode
 @Entity
+@Profile(value = {"dev", "prod", "test"})
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,7 +31,8 @@ public class Admin implements Serializable {
     private Boolean isPresent;
     @Column(name = "name")
     private String name;
-    public Admin(String email, String password,Boolean isPresent, String name){
+
+    public Admin(String email, String password, Boolean isPresent, String name) {
         this.email = email;
         this.password = password;
         this.role = Role.ADMIN;

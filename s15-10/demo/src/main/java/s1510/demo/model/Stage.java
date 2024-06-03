@@ -2,12 +2,14 @@ package s1510.demo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.context.annotation.Profile;
 import s1510.demo.enums.StageType;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Profile(value = {"dev", "prod", "test"})
 @Table(name = "STAGES")
 @AllArgsConstructor
 @NoArgsConstructor

@@ -1,5 +1,6 @@
 package s1510.demo.service;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,15 +12,23 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+@Profile(value = {"dev", "prod", "test"})
 public interface TeamManagerService {
 
-    Page<TeamManager> findByPage(int page, int size, String sortBy,String sortOrder);
+    Page<TeamManager> findByPage(int page, int size, String sortBy, String sortOrder);
+
     List<TeamManagerResponse> findAll();
+
     TeamManagerResponse findById(Long teamManagerId);
+
     TeamManagerResponse create(TeamManagerRequest saveTeamManager);
+
     TeamManagerResponse update(Long teamManagerId, TeamManagerRequest teamManager);
+
     TeamManagerResponse updateLogo(Long teamId, MultipartFile multipartFile) throws IOException;
+
     TeamManagerResponse delete(Long teamManagerId);
+
     TeamManagerResponse updateRoster(Long teamId, Long playerId);
 
 }

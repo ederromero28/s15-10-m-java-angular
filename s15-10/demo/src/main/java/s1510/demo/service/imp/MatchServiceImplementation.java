@@ -76,6 +76,7 @@ public class MatchServiceImplementation extends CRUDServiceImplementation<Match,
      */
     @Override
     public MatchResponseDto updateMatch(Long id, MatchRequestDTO matchRequestDTO) {
+
         Match existingMatch = repo.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Match not found with id: " + id));
 

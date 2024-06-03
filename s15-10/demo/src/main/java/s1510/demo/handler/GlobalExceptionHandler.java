@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import s1510.demo.dtos.error.ErrorDTO;
 import s1510.demo.exception.BadRequestException;
+import s1510.demo.exception.FileNotExistException;
 import s1510.demo.exception.ResourceNotFoundException;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @RestControllerAdvice
@@ -30,5 +32,11 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorDTO> handleGlobalException(Exception ex, WebRequest request) {
         ErrorDTO errorDTO = new ErrorDTO(LocalDateTime.now(), "An unespected error ocurred", request.getDescription(false));
         return new ResponseEntity<>(errorDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(FileNotExistException.class)
+    public ResponseEntity<ErrorDTO> handleFileNotExistException(FileNotExistException ex, WebRequest request){
+        ErrorDTO errorDTO = new ErrorDTO(LocalDateTime.now(), "File not exist exception", request.getDescription(false));
+        return new ResponseEntity<>(errorDTO, HttpStatus.NOT_ACCEPTABLE);
     }
 }

@@ -1,6 +1,7 @@
 package s1510.demo.controller;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -49,7 +50,7 @@ public class TeamManagerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TeamManagerResponse> findById(@PathVariable Long id){
+    public ResponseEntity<TeamManagerResponse> findById(@PathVariable @NotBlank Long id){
 
         TeamManagerResponse teamManager = teamManagerService.findById(id);
 
@@ -63,11 +64,12 @@ public class TeamManagerController {
         TeamManagerResponse team = teamManagerService.create(teamManager);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(team);
+
     }
 
     @PutMapping("/up_logo")
     public ResponseEntity<TeamManagerResponse> updateLogo(@RequestParam MultipartFile file,
-                                                          @PathVariable Long teamId) throws IOException {
+                                                          @PathVariable @NotBlank Long teamId) throws IOException {
 
         BufferedImage entry = ImageIO.read(file.getInputStream());
 
@@ -78,5 +80,6 @@ public class TeamManagerController {
         TeamManagerResponse response = teamManagerService.updateLogo(teamId,file);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
+
     }
 }

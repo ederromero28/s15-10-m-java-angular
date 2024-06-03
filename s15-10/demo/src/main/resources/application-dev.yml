@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: demo
+  datasource:
+    url: jdbc:${DB_URL}
+    password: ${DB_PASSWORD}
+    username: ${DB_USERNAME}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: postgresql
+    show-sql: false
+    hibernate.ddl-auto: update
+  output.ansi.enabled: always
+  devtools.livereload.enabled: true
+
+  # SWAGGER CONFIG #
+  jpa.properties.hibernate.jdbc.lob.non_contextual_creation: true
+  mvc.static-pat-pattern: /swagger*
+  main.allow-circular-references: true
+springdoc:
+  swagger-ui.path: /ui

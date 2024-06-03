@@ -1,0 +1,4 @@
+spring:
+  application.name: Spring Profiles
+  profiles.active: ${PROFILE}
+app.info: This is the Primary Application Property file

@@ -36,8 +36,11 @@ public class TeamManagerServiceImplementation implements TeamManagerService {
 
     @Override
     public Page<TeamManager> findByPage(int page, int size, String sortBy, String sortOrder) {
+
         Pageable pageable = PageRequest.of(page -1, size, Sort.by(Sort.Direction.fromString(sortOrder), sortBy));
+
         return teamManagerRepository.findAll(pageable);
+
     }
 
     @Override
@@ -50,6 +53,7 @@ public class TeamManagerServiceImplementation implements TeamManagerService {
 
     @Override
     public TeamManagerResponse findById(Long teamManagerId) {
+
         TeamManager teamFound = teamManagerRepository.findById(teamManagerId)
                 .orElseThrow(() ->new ObjectNotFoundException("Team no encontrado con el id"+ teamManagerId));
 
@@ -69,6 +73,7 @@ public class TeamManagerServiceImplementation implements TeamManagerService {
         teamManagerRepository.save(newTeamManager);
 
         return new TeamManagerResponse(newTeamManager);
+
     }
 
     @Transactional
@@ -84,6 +89,7 @@ public class TeamManagerServiceImplementation implements TeamManagerService {
         teamManagerRepository.save(teamM);
 
         return new TeamManagerResponse(teamM);
+
     }
 
     @Transactional

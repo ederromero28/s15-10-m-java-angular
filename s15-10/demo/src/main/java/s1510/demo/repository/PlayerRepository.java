@@ -19,4 +19,8 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
     @Modifying
     @Query("UPDATE Player p SET p.status = :status")
     Optional<Player> updateStatus(@Param("status")Boolean status);
+
+    @Modifying
+    @Query("UPDATE Player p SET p.teamManager = :teamManager")
+    Optional<Player> updateTeam(@Param("teamManager")Long teamManager);
 }

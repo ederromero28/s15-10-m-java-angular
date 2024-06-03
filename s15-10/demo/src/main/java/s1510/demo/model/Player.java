@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import s1510.demo.enums.Role;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
@@ -20,7 +21,7 @@ public class Player extends UserEntity {
     @Column(name = "id")
     private Long id;
     @OneToMany
-    private List<Award> awards;
+    private List<Award> awards = new ArrayList<>();
     @OneToOne
     @JoinColumn(name = "image_id", referencedColumnName = "id")
     private ImageEntity image;

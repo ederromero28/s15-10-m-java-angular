@@ -20,6 +20,6 @@ public interface TeamManagerService {
     TeamManagerResponse update(Long teamManagerId, TeamManagerRequest teamManager);
     TeamManagerResponse updateLogo(Long teamId, MultipartFile multipartFile) throws IOException;
     TeamManagerResponse delete(Long teamManagerId);
-
+    TeamManagerResponse updateRoster(Long teamId, Long playerId);
 
 }

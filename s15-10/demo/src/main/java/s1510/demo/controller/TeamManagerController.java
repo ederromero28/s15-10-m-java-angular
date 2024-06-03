@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import s1510.demo.dtos.request.TeamManagerRequest;
 import s1510.demo.dtos.response.TeamManagerResponse;
+import s1510.demo.exception.FileNotExistException;
 import s1510.demo.model.TeamManager;
 import s1510.demo.service.TeamManagerService;
 
@@ -31,21 +32,29 @@ public class TeamManagerController {
                                              @RequestParam(defaultValue = "10") int size,
                                              @RequestParam(defaultValue = "id") String sortBy,
                                              @RequestParam(defaultValue = "ASC") String sortOrder){
+
         Page<TeamManager> teamManagers = teamManagerService.findByPage(page,size,sortBy,sortOrder);
+
         return new ResponseEntity<>(teamManagers, HttpStatus.OK);
+
 
     }
     @GetMapping
     public ResponseEntity<List<TeamManagerResponse>> findAll() {
+
         List<TeamManagerResponse> teams = teamManagerService.findAll();
+
         return new ResponseEntity<>(teams, HttpStatus.OK);
+
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<TeamManagerResponse> findById(@PathVariable Long id){
 
         TeamManagerResponse teamManager = teamManagerService.findById(id);
+
         return new ResponseEntity<>(teamManager, HttpStatus.OK);
+
     }
 
     @PostMapping("/save")
@@ -56,5 +65,18 @@ public class TeamManagerController {
         return ResponseEntity.status(HttpStatus.CREATED).body(team);
     }
 
+    @PutMapping("/up_logo")
+    public ResponseEntity<TeamManagerResponse> updateLogo(@RequestParam MultipartFile file,
+                                                          @PathVariable Long teamId) throws IOException {
 
+        BufferedImage entry = ImageIO.read(file.getInputStream());
+
+        if (entry == null){
+            throw new FileNotExistException(String.format("La imagen ingresada no es valida"));
+        }
+
+        TeamManagerResponse response = teamManagerService.updateLogo(teamId,file);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }

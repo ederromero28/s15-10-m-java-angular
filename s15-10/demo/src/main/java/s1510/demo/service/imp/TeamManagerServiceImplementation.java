@@ -13,7 +13,9 @@ import s1510.demo.dtos.response.TeamManagerResponse;
 import s1510.demo.enums.Role;
 import s1510.demo.exception.ObjectNotFoundException;
 import s1510.demo.model.ImageEntity;
+import s1510.demo.model.Player;
 import s1510.demo.model.TeamManager;
+import s1510.demo.repository.PlayerRepository;
 import s1510.demo.repository.TeamManagerRepository;
 import s1510.demo.service.TeamManagerService;
 import s1510.demo.utils.CloudinaryService;
@@ -29,6 +31,8 @@ public class TeamManagerServiceImplementation implements TeamManagerService {
     private TeamManagerRepository teamManagerRepository;
     @Autowired
     private CloudinaryService cloudinaryService;
+    @Autowired
+    private PlayerRepository playerRepository;
 
     @Override
     public Page<TeamManager> findByPage(int page, int size, String sortBy, String sortOrder) {
@@ -90,7 +94,9 @@ public class TeamManagerServiceImplementation implements TeamManagerService {
                 .orElseThrow(() -> new ObjectNotFoundException("Team no encontrado con id" + teamId));
 
         Map imgProperties = cloudinaryService.uploadNewImage(multipartFile);
+
         ImageEntity newImage = new ImageEntity();
+
         newImage.setImage_name((String) imgProperties.get("original_filename"));
         newImage.setUrl((String) imgProperties.get("url"));
         newImage.setImage_id((String) imgProperties.get("public_id"));
@@ -99,14 +105,41 @@ public class TeamManagerServiceImplementation implements TeamManagerService {
         teamManagerRepository.save(team);
 
         return  new TeamManagerResponse(team);
+
     }
 
     @Transactional
     @Override
     public TeamManagerResponse delete(Long teamManagerId) {
+
         TeamManager team = teamManagerRepository.findById(teamManagerId)
                 .orElseThrow(() ->new ObjectNotFoundException("Team no encontrado con el id" + teamManagerId));
+
         teamManagerRepository.delete(team);
+
         return new TeamManagerResponse(team);
+
     }
+
+    @Transactional
+    @Override
+    public TeamManagerResponse updateRoster(Long teamId, Long playerId) {
+
+        Player playerFound = playerRepository.findById(playerId)
+                .orElseThrow(() -> new ObjectNotFoundException("Player not found whit id" + playerId));
+
+        TeamManager teamManagerFound = teamManagerRepository.findById(teamId)
+                .orElseThrow(() -> new ObjectNotFoundException("Team not found whit id" + teamId));
+
+        List<Player> roster = teamManagerFound.getPlayers();
+        roster.add(playerFound);
+
+        teamManagerFound.setPlayers(roster);
+        teamManagerRepository.save(teamManagerFound);
+
+        return new TeamManagerResponse(teamManagerFound);
+
+    }
+
+
 }

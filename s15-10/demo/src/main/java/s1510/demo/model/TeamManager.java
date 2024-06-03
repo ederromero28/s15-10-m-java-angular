@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import s1510.demo.enums.Role;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
@@ -23,9 +24,9 @@ public class TeamManager extends UserEntity{
     @JoinColumn(name = "logo_id", referencedColumnName = "id")
     private ImageEntity logo;
     @OneToMany
-    private List<Award> awards;
+    private List<Award> awards = new ArrayList<>();
     @OneToMany
-    private List<Player> players;
+    private List<Player> players = new ArrayList<>();
 
     public TeamManager(String email, String password, Boolean isPresent, String name, List<Player> players){
         super(email,password, Role.TEAM_MANAGER, isPresent ,name);

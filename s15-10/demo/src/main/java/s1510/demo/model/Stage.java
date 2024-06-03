@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "stage")
+@Table(name = "STAGES")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -19,16 +19,14 @@ public class Stage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "stageType")
+    @Column(name = "stage_type")
+    @Enumerated(EnumType.STRING)
     private StageType stageType;
     @ManyToOne
     @JoinColumn(name = "competition_id", referencedColumnName = "id")
     private Competition competitionReference;
     // 1 Stage puede tener muchos Matchs
-    @OneToMany(
-            fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL
-    )
+    @OneToMany()
     private List<Match> matchs = new ArrayList<>();
     @Column(name = "winner")
     private String winner;

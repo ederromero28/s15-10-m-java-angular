@@ -22,17 +22,19 @@ public class Match implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @Column(name = "start_at")
     LocalDateTime startAt;
+    @Column(name = "end_at")
     LocalDateTime endAt;
+    @Column(name = "points_team_a")
     Integer pointsTeamA;
+    @Column(name = "points_team_b")
     Integer pointsTeamB;
     @ManyToOne
     @JoinColumn(name = "sport_id", referencedColumnName = "id")
     Sport sport;
-    @ManyToOne(
-            fetch = FetchType.LAZY,
-            optional = false // Siempre tiene que haber una entidad Stage asociado a esta entidad Match
-    )
+    @ManyToOne()
     @JoinColumn(name = "stage_id")
     private Stage stage;
+
 }

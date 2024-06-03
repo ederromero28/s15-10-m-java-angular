@@ -12,7 +12,7 @@ public record CompetitionResponse(
         this(
                 competition.getId(),
                 competition.getName(),
-                competition.getSize()
+                competition.getStageSize()
                 );
     }
 }

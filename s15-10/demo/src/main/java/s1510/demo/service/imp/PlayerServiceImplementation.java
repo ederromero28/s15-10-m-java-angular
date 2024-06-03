@@ -68,12 +68,12 @@ public class PlayerServiceImplementation implements PlayerService {
         Player player = playerRepository.findById(playerId)
                 .orElseThrow(() -> new ObjectNotFoundException("Player no encontrado con el id" + playerId));
 
-        if (player.getStatus()) {
-            playerRepository.updateStatus(false);
+        if (player.getIsPresent()) {
+            playerRepository.updateIsPresent(false);
             return new PlayerResponse(player);
         }
 
-        playerRepository.updateStatus(true);
+        playerRepository.updateIsPresent(true);
 
         return new PlayerResponse(player);
 
@@ -103,18 +103,20 @@ public class PlayerServiceImplementation implements PlayerService {
     @Override
     public List<PlayerResponse> listAllPlayers() {
 
-        return playerRepository.findAll().stream().map(PlayerResponse::new).toList();
+        return playerRepository.findAll()
+                .stream()
+                .map(PlayerResponse::new)
+                .toList();
 
     }
 
     @Override
     public List<PlayerResponse> listPlayerAvailable() {
 
-        return playerRepository.findPlayersAvailable()
+        return playerRepository.findPlayersAvailable(true)
                 .stream()
                 .map(PlayerResponse::new)
                 .toList();
-
     }
 
     @Override
@@ -132,4 +134,5 @@ public class PlayerServiceImplementation implements PlayerService {
         return new PlayerResponse(playerFound);
 
     }
+
 }

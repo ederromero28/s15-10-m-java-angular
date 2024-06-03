@@ -4,22 +4,38 @@ import jakarta.persistence.*;
 import lombok.*;
 import s1510.demo.enums.Role;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode
 @Entity
 @Data
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Player extends UserEntity {
+@Table(name = "PLAYERS")
+public class Player implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "password")
+    private String password;
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private Role role;
+    @Column(name = "is_present")
+    private Boolean isPresent;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "phone")
+    private String phone;
+    @Column(name = "contact_email")
+    private String contactEmail;
     @OneToMany
     private List<Award> awards = new ArrayList<>();
     @OneToOne
@@ -28,18 +44,28 @@ public class Player extends UserEntity {
     @ManyToOne
     @JoinColumn(name = "team_id", referencedColumnName = "id")
     private TeamManager teamManager;
-    @Column(name = "phone")
-    private String phone;
-    @Column(name = "contact_email")
-    private String contactEmail;
-    @Column(name = "status")
-    private Boolean status;
 
-    public Player(String email, String password,Boolean isPresent, String name,List<Award> awards, String phone, String contactEmail){
-        super(email,password,Role.PLAYER, isPresent ,name);
-        this.awards = awards;
+    public Player(String email,
+                  String password,
+                  Boolean isPresent,
+                  String name,
+                  String phone,
+                  String contactEmail,
+                  List<Award> awards,
+                  ImageEntity image,
+                  TeamManager teamManager){
+
+        this.email =email;
+        this.password = password;
+        this.role = Role.PLAYER;
+        this.isPresent = isPresent;
+        this.name = name;
         this.phone = phone;
         this.contactEmail = contactEmail;
+        this.awards = awards;
+        this.image = image;
+        this.teamManager = teamManager;
+
     }
 
 }

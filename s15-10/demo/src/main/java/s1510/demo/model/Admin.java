@@ -4,21 +4,37 @@ import jakarta.persistence.*;
 import lombok.*;
 import s1510.demo.enums.Role;
 
-@EqualsAndHashCode(callSuper = true)
+import java.io.Serializable;
+
+@EqualsAndHashCode
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Builder
-@Table(name = "admins")
-public class Admin extends UserEntity{
+@Table(name = "ADMINS")
+public class Admin implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "password")
+    private String password;
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private Role role;
+    @Column(name = "is_present")
+    private Boolean isPresent;
+    @Column(name = "name")
+    private String name;
     public Admin(String email, String password,Boolean isPresent, String name){
-        super(email,password, Role.ADMIN, isPresent,name);
+        this.email = email;
+        this.password = password;
+        this.role = Role.ADMIN;
+        this.isPresent = isPresent;
+        this.name = name;
     }
 
 }

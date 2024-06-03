@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "competition")
+@Table(name = "COMPETITIONS")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -22,9 +22,11 @@ public class Competition {
 
     @Column(name = "name")
     private String name;
-    @Column(name = "size")
-    private int size;
+    @Column(name = "stage_size")
+    private Integer stageSize;
+    @Column(name = "date_start")
     private LocalDate dateStart;
+    @Column(name = "date_end")
     private LocalDate dateEnd;
     @OneToMany
     private Set<Award> awards;

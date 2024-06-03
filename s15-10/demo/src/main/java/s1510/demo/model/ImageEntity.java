@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "IMAGES_ENTITIES")
 public class ImageEntity {
 
     @Id
@@ -18,7 +19,10 @@ public class ImageEntity {
     private Long id;
     @OneToOne
     private TeamManager teamManager;
+    @Column(name = "url")
     private String url;
+    @Column(name = "image_id")
     private String image_id;
+    @Column(name = "image_name")
     private String image_name;
 }

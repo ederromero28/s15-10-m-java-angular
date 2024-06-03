@@ -23,7 +23,7 @@ public class CompetitionServiceImplementation implements CompetitionService {
     public Competition create(CompetitionRequest competitionCreate) {
         Competition competition = new Competition();
         competition.setName(competitionCreate.name());
-        competition.setSize(competitionCreate.size());
+        competition.setStageSize(competitionCreate.size());
         return competitionRepository.save(competition);
     }
 
@@ -31,7 +31,7 @@ public class CompetitionServiceImplementation implements CompetitionService {
     public Competition update(CompetitionRequest competitionUpdate) {
         Competition competition = new Competition();
         competition.setName(competitionUpdate.name());
-        competition.setSize(competitionUpdate.size());
+        competition.setStageSize(competitionUpdate.size());
         return competitionRepository.save(competition);
     }
 

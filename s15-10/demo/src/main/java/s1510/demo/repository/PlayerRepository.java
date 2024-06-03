@@ -13,14 +13,15 @@ import java.util.Optional;
 @Repository
 public interface PlayerRepository extends JpaRepository<Player, Long> {
 
-    @Query("SELECT p FROM Player p WHERE p.status = true")
-    List<Player> findPlayersAvailable();
+    @Query("SELECT p FROM Player p WHERE p.isPresent = :isPresent")
+    List<Player> findPlayersAvailable(@Param("isPresent")Boolean isPresent);
 
     @Modifying
-    @Query("UPDATE Player p SET p.status = :status")
-    Optional<Player> updateStatus(@Param("status")Boolean status);
+    @Query("UPDATE Player p SET p.isPresent = :isPresent")
+    Player updateIsPresent(@Param("isPresent")Boolean isPresent);
 
     @Modifying
     @Query("UPDATE Player p SET p.teamManager = :teamManager")
     Optional<Player> updateTeam(@Param("teamManager")Long teamManager);
+
 }

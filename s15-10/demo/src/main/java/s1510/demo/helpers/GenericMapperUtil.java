@@ -1,8 +1,10 @@
 package s1510.demo.helpers;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+@Profile(value = {"dev", "prod", "test"})
 @Component
 public class GenericMapperUtil {
     private final ModelMapper modelMapper;

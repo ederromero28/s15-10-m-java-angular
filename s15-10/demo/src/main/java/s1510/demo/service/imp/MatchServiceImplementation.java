@@ -8,7 +8,6 @@ import s1510.demo.dtos.response.MatchResponseDto;
 import s1510.demo.exception.ResourceNotFoundException;
 import s1510.demo.model.Match;
 import s1510.demo.model.Sport;
-import s1510.demo.repository.GenericRepo;
 import s1510.demo.repository.MatchRepository;
 import s1510.demo.repository.SportRepository;
 import s1510.demo.service.MatchService;
@@ -19,17 +18,14 @@ import java.util.List;
 @Service
 @Profile(value = {"dev", "prod", "test"})
 @RequiredArgsConstructor
-public class MatchServiceImplementation extends CRUDServiceImplementation<Match, Long> implements MatchService {
+public class MatchServiceImplementation implements MatchService {
 
-    private final MatchRepository repo;
+    private final MatchRepository matchRepository;
     private final GenericMapperUtil mapperUtil;
 
     private final SportRepository sportRepository;
 
-    @Override
-    protected GenericRepo<Match, Long> getRepo() {
-        return repo;
-    }
+
 
     /**
      * @return
@@ -38,7 +34,7 @@ public class MatchServiceImplementation extends CRUDServiceImplementation<Match,
 
     @Override
     public List<MatchResponseDto> getAllMatches() {
-        return repo.findAll().stream()
+        return matchRepository.findAll().stream()
                 .map(match -> mapperUtil.mapToDto(match, MatchResponseDto.class))
                 .toList();
     }
@@ -51,7 +47,7 @@ public class MatchServiceImplementation extends CRUDServiceImplementation<Match,
     @Override
     public MatchResponseDto createMatch(MatchRequestDTO matchRequestDTO) {
         Match match = mapperUtil.mapToEntity(matchRequestDTO, Match.class);
-        Match savedMatch = repo.save(match);
+        Match savedMatch = matchRepository.save(match);
         return mapperUtil.mapToDto(savedMatch, MatchResponseDto.class);
     }
 
@@ -63,7 +59,7 @@ public class MatchServiceImplementation extends CRUDServiceImplementation<Match,
 
     @Override
     public MatchResponseDto getMatchById(Long id) {
-        Match match = repo.findById(id)
+        Match match = matchRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Match not found with id:" + id));
         return mapperUtil.mapToDto(match, MatchResponseDto.class);
     }
@@ -79,7 +75,7 @@ public class MatchServiceImplementation extends CRUDServiceImplementation<Match,
     @Override
     public MatchResponseDto updateMatch(Long id, MatchRequestDTO matchRequestDTO) {
 
-        Match existingMatch = repo.findById(id)
+        Match existingMatch = matchRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Match not found with id: " + id));
 
         Sport sport = sportRepository.findById(matchRequestDTO.sportId())
@@ -91,7 +87,7 @@ public class MatchServiceImplementation extends CRUDServiceImplementation<Match,
         existingMatch.setPointsTeamB(matchRequestDTO.pointsTeamB());
         existingMatch.setSport(sport);
 
-        Match updatedMatch = repo.save(existingMatch);
+        Match updatedMatch = matchRepository.save(existingMatch);
         return mapperUtil.mapToDto(updatedMatch, MatchResponseDto.class);
 
     }

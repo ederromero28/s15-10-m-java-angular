@@ -8,7 +8,7 @@ import s1510.demo.model.Match;
 import java.util.List;
 
 @Profile(value = {"dev", "prod", "test"})
-public interface MatchService extends CRUD<Match, Long> {
+public interface MatchService {
     List<MatchResponseDto> getAllMatches();
 
     MatchResponseDto createMatch(MatchRequestDTO matchRequestDTO);

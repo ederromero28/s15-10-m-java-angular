@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import s1510.demo.dtos.request.SportRequest;
 import s1510.demo.dtos.response.SportResponse;
 import s1510.demo.model.Sport;
+import s1510.demo.service.SportService;
 import s1510.demo.service.imp.SportServiceImplementation;
 
 import java.util.List;
@@ -19,31 +20,35 @@ import java.util.Optional;
 @RequestMapping("/sport")
 public class SportController {
 
+    private final SportService sportService;
+
     @Autowired
-    private SportServiceImplementation sportService;
+    public SportController(SportService sportService) {
+        this.sportService = sportService;
+    }
 
     @GetMapping
-    public List<Sport> findAll(){
-        return sportService.findAll();
+    public ResponseEntity<List<SportResponse>> findAll(){
+        List<SportResponse> sportList = sportService.findAll();
+        return new ResponseEntity<>(sportList, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Sport> findById(@PathVariable Long id){
-
-        Optional<Sport> sport = sportService.findById(id);
-        return sport.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<SportResponse> findById(@PathVariable Long id){
+        SportResponse sportResponse = sportService.findById(id);
+        return new ResponseEntity<>(sportResponse, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<?> create (@RequestBody @Valid SportRequest sportDTO){
-        Sport sport =sportService.create(sportDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new SportResponse(sport));
+    public ResponseEntity<SportResponse> create (@Valid @RequestBody SportRequest sportRequest){
+        SportResponse sport = sportService.create(sportRequest);
+        return new ResponseEntity<>(sport, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Valid SportRequest sportDTO){
-        Sport sport = sportService.update(id, sportDTO);
-        return ResponseEntity.ok(new SportResponse(sport));
+    public ResponseEntity<SportResponse> update(@Valid @PathVariable Long id, @RequestBody SportRequest sportRequest){
+        SportResponse updatedSport = sportService.update(id, sportRequest);
+        return new ResponseEntity<>(updatedSport, HttpStatus.OK);
     }
 
 //    @DeleteMapping("/{id}")

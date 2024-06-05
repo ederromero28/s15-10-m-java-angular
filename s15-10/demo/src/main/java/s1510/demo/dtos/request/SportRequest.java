@@ -6,5 +6,8 @@ import org.springframework.context.annotation.Profile;
 
 @Profile(value = {"dev", "prod", "test"})
 
-public record SportRequest(@NotBlank String name, @NotNull int teamSize, @NotNull int rounds) {
+public record SportRequest(
+        @NotBlank String name,
+        @NotNull int teamSize,
+        @NotNull int rounds) {
 }

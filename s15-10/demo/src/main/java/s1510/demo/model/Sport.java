@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.context.annotation.Profile;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -14,7 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-public class Sport {
+public class Sport implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

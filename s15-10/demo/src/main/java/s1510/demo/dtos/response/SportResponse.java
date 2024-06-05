@@ -5,7 +5,10 @@ import s1510.demo.model.Sport;
 
 @Profile(value = {"dev", "prod", "test"})
 
-public record SportResponse(String name, Integer teamSize, Integer rounds) {
+public record SportResponse(
+        String name,
+        Integer teamSize,
+        Integer rounds) {
 
     public SportResponse(Sport sport) {
         this(sport.getName(), sport.getTeamSize(), sport.getRounds());

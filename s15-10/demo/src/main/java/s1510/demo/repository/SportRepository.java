@@ -7,5 +7,5 @@ import s1510.demo.model.Sport;
 
 @Repository
 @Profile(value = {"dev", "prod", "test"})
-public interface SportRepository extends JpaRepository<Sport, Long> {
+public interface SportRepository extends GenericRepo<Sport, Long> {
 }

@@ -2,6 +2,7 @@ package s1510.demo.helpers;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+@Profile(value = {"dev", "prod", "test"})
 @Service
 public class CloudinaryService {
 

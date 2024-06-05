@@ -1,11 +1,12 @@
-package s1510.demo.service;
+package s1510.demo.service.impl;
 
 
 import org.junit.jupiter.api.Test;
+import s1510.demo.service.PlayerService;
 
 public class PlayerServiceTest {
 
-    private  PlayerService playerService;
+    private PlayerService playerService;
 
     public PlayerServiceTest(PlayerService playerService){
 

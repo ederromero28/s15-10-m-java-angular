@@ -24,8 +24,8 @@ public class Competition {
 
     @Column(name = "name")
     private String name;
-    @Column(name = "stage_size")
-    private Integer stageSize;
+    @Column(name = "stage_count")
+    private Integer stageCount;
     @Column(name = "date_start")
     private LocalDate dateStart;
     @Column(name = "date_end")

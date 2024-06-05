@@ -25,7 +25,11 @@ public class CompetitionServiceImplementation implements CompetitionService {
     public Competition create(CompetitionRequest competitionCreate) {
         Competition competition = new Competition();
         competition.setName(competitionCreate.name());
-        competition.setStageSize(competitionCreate.size());
+        competition.setStageCount(competitionCreate.stageCount());
+        competition.setDateStart(competitionCreate.dateStart());
+        competition.setDateEnd(competitionCreate.dateEnd());
+        competition.setAwards(competitionCreate.awards());
+        competition.setStages(competitionCreate.stages());
         return competitionRepository.save(competition);
     }
 
@@ -33,7 +37,11 @@ public class CompetitionServiceImplementation implements CompetitionService {
     public Competition update(CompetitionRequest competitionUpdate) {
         Competition competition = new Competition();
         competition.setName(competitionUpdate.name());
-        competition.setStageSize(competitionUpdate.size());
+        competition.setStageCount(competitionUpdate.stageCount());
+        competition.setDateStart(competitionUpdate.dateStart());
+        competition.setDateEnd(competitionUpdate.dateEnd());
+        competition.setAwards(competitionUpdate.awards());
+        competition.setStages(competitionUpdate.stages());
         return competitionRepository.save(competition);
     }
 
@@ -57,6 +65,4 @@ public class CompetitionServiceImplementation implements CompetitionService {
     public Optional<Competition> findById(Long competitionId) {
         return competitionRepository.findById(competitionId);
     }
-
-
 }

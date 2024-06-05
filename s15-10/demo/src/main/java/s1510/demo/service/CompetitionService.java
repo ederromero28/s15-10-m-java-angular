@@ -1,6 +1,5 @@
 package s1510.demo.service;
 
-
 import org.springframework.context.annotation.Profile;
 import s1510.demo.dtos.request.CompetitionRequest;
 import s1510.demo.model.Competition;

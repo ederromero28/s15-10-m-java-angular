@@ -8,8 +8,19 @@ import s1510.demo.model.Stage;
 
 @Profile(value = {"dev", "prod", "test"})
 
-public record StageResponse(Long id, @NotNull StageType stageType, @NotBlank String winner) {
+public record StageResponse(
+        Long id,
+        @NotNull StageType stageType,
+        @NotBlank String winner) {
     public StageResponse(Stage stage) {
-        this(stage.getId(), stage.getStageType(), stage.getWinner());
+        this(
+                stage.getId(),
+                stage.getStageType(),
+                stage.getWinner()
+        );
+    }
+
+    public StageResponse {
+
     }
 }

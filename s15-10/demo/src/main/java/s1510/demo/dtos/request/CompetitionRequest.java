@@ -1,5 +1,6 @@
 package s1510.demo.dtos.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
@@ -21,15 +22,14 @@ public record CompetitionRequest(
         String name,
         @NotNull(message= "La cantidad de etapas es requerida")
         int stageCount,
+//        List<Stage> stages,
         @NotNull(message= "La fecha de inicio para competiciones es requerida ")
         @FutureOrPresent(message = "La fecha de inicio de competiciones debe ser en el presente o futuro")
         LocalDate dateStart,
         @NotNull(message= "La fecha de finalización para competiciones es requerida ")
         @FutureOrPresent(message = "La fecha de finalización de competiciones debe ser en el presente o futuro")
-        LocalDate dateEnd,
-        @NotNull(message = "La competición requiere una lista de premios")
-        Set<Award> awards,
-        @NotNull(message = "La competición requiere una lista de etapas")
-        List<Stage> stages
+        LocalDate dateEnd
+//        @JsonIgnore
+//        Set<Award> awards,
 ) {
 }

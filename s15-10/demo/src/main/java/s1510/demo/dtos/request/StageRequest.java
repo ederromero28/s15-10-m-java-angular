@@ -7,5 +7,10 @@ import s1510.demo.enums.StageType;
 
 @Profile(value = {"dev", "prod", "test"})
 
-public record StageRequest(Long id, @NotNull StageType stageType, @NotBlank String winner) {
+public record StageRequest(
+        Long id,
+//        @NotNull
+        StageType stageType,
+//        @NotBlank
+        String winner) {
 }

@@ -3,12 +3,20 @@ package s1510.demo.service.imp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import s1510.demo.controller.StageController;
 import s1510.demo.dtos.request.CompetitionRequest;
+import s1510.demo.dtos.request.StageRequest;
+import s1510.demo.enums.StageType;
 import s1510.demo.model.Competition;
+import s1510.demo.model.Stage;
 import s1510.demo.repository.CompetitionRepository;
+import s1510.demo.repository.StageRepository;
 import s1510.demo.service.CompetitionService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +28,9 @@ public class CompetitionServiceImplementation implements CompetitionService {
     @Autowired
     private CompetitionRepository competitionRepository;
 
+    @Autowired
+    private StageRepository stageRepository;
+
 
     @Override
     public Competition create(CompetitionRequest competitionCreate) {
@@ -28,8 +39,14 @@ public class CompetitionServiceImplementation implements CompetitionService {
         competition.setStageCount(competitionCreate.stageCount());
         competition.setDateStart(competitionCreate.dateStart());
         competition.setDateEnd(competitionCreate.dateEnd());
-        competition.setAwards(competitionCreate.awards());
-        competition.setStages(competitionCreate.stages());
+//        competition.setAwards(competitionCreate.awards());
+//        competition.setStages(competitionCreate.stages());
+        for (int i = 0; i < competition.getStageCount(); i++) {
+            Stage stage = new Stage();
+            stageRepository.saveAndFlush(stage);
+            competition.addStage(stage);
+        }
+
         return competitionRepository.save(competition);
     }
 
@@ -40,8 +57,8 @@ public class CompetitionServiceImplementation implements CompetitionService {
         competition.setStageCount(competitionUpdate.stageCount());
         competition.setDateStart(competitionUpdate.dateStart());
         competition.setDateEnd(competitionUpdate.dateEnd());
-        competition.setAwards(competitionUpdate.awards());
-        competition.setStages(competitionUpdate.stages());
+//        competition.setAwards(competitionUpdate.awards());
+//        competition.setStages(competitionUpdate.stages());
         return competitionRepository.save(competition);
     }
 

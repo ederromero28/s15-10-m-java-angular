@@ -1,10 +1,12 @@
 package s1510.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -33,5 +35,9 @@ public class Competition {
     @OneToMany
     private Set<Award> awards;
     @OneToMany
-    private List<Stage> stages;
+    private List<Stage> stages = new ArrayList<>();
+
+    public void addStage(Stage stage) {
+        stages.add(stage);
+    }
 }

@@ -37,7 +37,7 @@ public class StageServiceImplementation implements StageService {
     @Override
     public StageResponse save(StageRequest saveStage) {
         Stage stage = Stage.builder()
-                .id(saveStage.id())
+//                .id(saveStage.id())
                 .stageType(saveStage.stageType())
                 .winner(saveStage.winner())
                 .build();

@@ -50,20 +50,24 @@ public class StageController {
     }
 
     @PostMapping("/stage")
-    public ResponseEntity<StageResponse> createStage(@RequestBody @Valid StageRequest stageRequest, UriComponentsBuilder uriComponentsBuilder) {
-        if (!stageService.existsById(stageRequest.id())) throw new ResourceNotFoundException(String.format("Stage no fue encontrado con: id = '%s'", stageRequest.id()));
+    public ResponseEntity<StageResponse> createStage(
+            @RequestBody
+            @Valid StageRequest stageRequest, UriComponentsBuilder uriComponentsBuilder) {
+//        if (!stageService.existsById(stageRequest.id())) throw new ResourceNotFoundException(String.format("Stage no fue encontrado con: id = '%s'", stageRequest.id()));
         StageResponse stageResponse = stageService.save(stageRequest);
-        URI url = uriComponentsBuilder.path("api/v1/stage/{id}").buildAndExpand(stageResponse.id()).toUri();
+        URI url = uriComponentsBuilder.path("api/v1/stage/{id}")
+                .buildAndExpand(stageResponse.id())
+                .toUri();
         return ResponseEntity.created(url).body(stageResponse);
     }
 
     @PutMapping("/stage")
     public ResponseEntity<StageResponse> updateStage(@RequestBody @Valid StageRequest stageRequest) {
-        if (stageService.existsById(stageRequest.id())) {
+//        if (stageService.existsById(stageRequest.id())) {
             StageResponse stageResponse = stageService.save(stageRequest);
             return ResponseEntity.ok(stageResponse);
-        } else {
+        /*} else {
             throw new ResourceNotFoundException(String.format("Stage no fue encontrado con: id = '%s'", stageRequest.id()));
-        }
+        }*/
     }
 }

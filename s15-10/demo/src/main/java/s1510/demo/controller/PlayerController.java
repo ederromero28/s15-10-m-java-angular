@@ -27,7 +27,7 @@ public class PlayerController {
     private final PlayerService playerService;
 
     @PostMapping("/create")
-    public ResponseEntity<PlayerResponse> createPlayer(@RequestBody PlayerRequest playerRequest) {
+    public ResponseEntity<PlayerResponse> createPlayer(PlayerRequest playerRequest) {
 
         PlayerResponse newPlayer = playerService.createPlayer(playerRequest);
 
@@ -36,7 +36,7 @@ public class PlayerController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<PlayerResponse> updatePlayer(@PathVariable @NotBlank Long playerId,
+    public ResponseEntity<PlayerResponse> updatePlayer(@NotBlank Long playerId,
                                                        @RequestBody PlayerRequest playerRequest) {
 
         PlayerResponse newPlayer = playerService.updatePlayer(playerId, playerRequest);

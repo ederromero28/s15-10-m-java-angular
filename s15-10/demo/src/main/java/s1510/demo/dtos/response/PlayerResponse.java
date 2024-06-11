@@ -9,8 +9,7 @@ public record PlayerResponse(Long id,
                              String name,
                              String email,
                              String contactEmail,
-                             ImageEntityResponse logo,
-                             String phone
+                             String phone,
 			     String country
 			     ) {
 
@@ -19,8 +18,7 @@ public record PlayerResponse(Long id,
                 player.getName(),
                 player.getEmail(),
                 player.getContactEmail(),
-                new ImageEntityResponse(
-                        player.getImage()),
-                player.getPhone());
+                player.getPhone(),
+		player.getCountry());
     }
 }

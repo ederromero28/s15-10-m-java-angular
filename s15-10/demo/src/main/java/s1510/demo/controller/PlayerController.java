@@ -36,7 +36,7 @@ public class PlayerController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<PlayerResponse> updatePlayer(@NotBlank Long playerId,
+    public ResponseEntity<PlayerResponse> updatePlayer(Long playerId,
                                                        @RequestBody PlayerRequest playerRequest) {
 
         PlayerResponse newPlayer = playerService.updatePlayer(playerId, playerRequest);

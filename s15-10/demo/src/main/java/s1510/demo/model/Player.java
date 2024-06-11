@@ -3,6 +3,7 @@ package s1510.demo.model;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.context.annotation.Profile;
+import s1510.demo.enums.Achievement;
 import s1510.demo.enums.Role;
 
 import java.io.Serializable;
@@ -30,6 +31,13 @@ public class Player implements Serializable {
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @Column(name = "country")
+    private String country;
+    @Column(name = "achievement")
+    @Enumerated(EnumType.STRING)
+    private Achievement achievement;
+
     @Column(name = "is_present")
     private Boolean isPresent;
     @Column(name = "name")

@@ -10,7 +10,9 @@ public record PlayerResponse(Long id,
                              String email,
                              String contactEmail,
                              ImageEntityResponse logo,
-                             String phone) {
+                             String phone
+			     String country
+			     ) {
 
     public PlayerResponse(Player player) {
         this(player.getId(),

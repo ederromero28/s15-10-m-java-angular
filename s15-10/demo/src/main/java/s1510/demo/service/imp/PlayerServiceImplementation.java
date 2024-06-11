@@ -35,10 +35,11 @@ public class PlayerServiceImplementation implements PlayerService {
         Player newPlayer = new Player();
 
         newPlayer.setName(playerRequest.name());
-        newPlayer.setName(playerRequest.email());
-        newPlayer.setName(playerRequest.contactEmail());
-        newPlayer.setName(playerRequest.password());
-        newPlayer.setName(playerRequest.phone());
+        newPlayer.setEmail(playerRequest.email());
+        newPlayer.setContactEmail(playerRequest.contactEmail());
+        newPlayer.setPassword(playerRequest.password());
+        newPlayer.setPhone(playerRequest.phone());
+	newPlayer.setCountry(playerRequest.country());
 
         playerRepository.save(newPlayer);
 

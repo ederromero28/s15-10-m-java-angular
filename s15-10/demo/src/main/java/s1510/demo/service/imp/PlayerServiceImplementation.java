@@ -10,9 +10,9 @@ import s1510.demo.dtos.response.PlayerResponse;
 import s1510.demo.exception.ObjectNotFoundException;
 import s1510.demo.model.ImageEntity;
 import s1510.demo.model.Player;
-import s1510.demo.model.TeamManager;
+import s1510.demo.model.Team;
 import s1510.demo.repository.PlayerRepository;
-import s1510.demo.repository.TeamManagerRepository;
+import s1510.demo.repository.TeamRepository;
 import s1510.demo.service.PlayerService;
 import s1510.demo.helpers.CloudinaryService;
 
@@ -27,7 +27,7 @@ public class PlayerServiceImplementation implements PlayerService {
 
     private final PlayerRepository playerRepository;
     private final CloudinaryService cloudinaryService;
-    private final TeamManagerRepository teamManagerRepository;
+    private final TeamRepository teamRepository;
 
     @Override
     public PlayerResponse createPlayer(PlayerRequest playerRequest) {
@@ -128,10 +128,10 @@ public class PlayerServiceImplementation implements PlayerService {
         Player playerFound = playerRepository.findById(playerId)
                 .orElseThrow(() -> new ObjectNotFoundException("Player not found whit id" + playerId));
 
-        TeamManager teamManagerFound = teamManagerRepository.findById(teamId)
+        Team teamFound = teamRepository.findById(teamId)
                 .orElseThrow(() -> new ObjectNotFoundException("Team not found whit id" + teamId));
 
-        playerFound.setTeamManager(teamManagerFound);
+        playerFound.setTeam(teamFound);
         playerRepository.save(playerFound);
 
         return new PlayerResponse(playerFound);

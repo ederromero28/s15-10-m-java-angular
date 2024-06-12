@@ -22,7 +22,7 @@ public class ImageEntity {
     private Long id;
     @OneToOne
     @JsonIgnore
-    private TeamManager teamManager;
+    private Team team;
     @Column(name = "url")
     private String url;
     @Column(name = "image_id")

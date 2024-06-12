@@ -53,7 +53,7 @@ public class Player implements Serializable {
     private ImageEntity image;
     @ManyToOne
     @JoinColumn(name = "team_id", referencedColumnName = "id")
-    private TeamManager teamManager;
+    private Team team;
 
     public Player(String email,
                   String password,
@@ -63,7 +63,7 @@ public class Player implements Serializable {
                   String contactEmail,
                   List<Award> awards,
                   ImageEntity image,
-                  TeamManager teamManager) {
+                  Team team) {
 
         this.email = email;
         this.password = password;
@@ -74,7 +74,7 @@ public class Player implements Serializable {
         this.contactEmail = contactEmail;
         this.awards = awards;
         this.image = image;
-        this.teamManager = teamManager;
+        this.team = team;
 
     }
 

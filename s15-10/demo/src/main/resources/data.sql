@@ -19,7 +19,7 @@ INSERT INTO MATCHES (start_at, end_at, points_team_a, points_team_b) VALUES
 --INSERT INTO PLAYERS (email, password, role, is_present, name, phone, contact_email) VALUES
 --('ariel@gmail.com','987654', 'PLAYER', true, 'Ariel', '117875637', 'ariel@outlook.com');
 --
-INSERT INTO TEAM_MANAGERS (email, password, is_present, name) VALUES
+INSERT INTO TEAMS (email, password, is_present, name) VALUES
 ('dalmiro@gmail.com','10293847', true, 'Dalmiro');
 
 INSERT INTO IMAGES_ENTITIES (url, image_id, image_name) VALUES

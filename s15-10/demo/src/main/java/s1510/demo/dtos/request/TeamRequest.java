@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Profile;
 
 @Profile(value = {"dev", "prod", "test"})
 
-public record TeamManagerRequest(@Email @NotBlank String email,
-                                 @NotBlank String password,
-                                 @NotBlank String name) {
+public record TeamRequest(@Email @NotBlank String email,
+                          @NotBlank String password,
+                          @NotBlank String name) {
 }

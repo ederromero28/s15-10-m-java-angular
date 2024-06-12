@@ -23,7 +23,7 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
     Player updateIsPresent(@Param("isPresent") Boolean isPresent);
 
     @Modifying
-    @Query("UPDATE Player p SET p.teamManager = :teamManager")
-    Optional<Player> updateTeam(@Param("teamManager") Long teamManager);
+    @Query("UPDATE Player p SET p.team = :team")
+    Optional<Player> updateTeam(@Param("team") Long team);
 
 }

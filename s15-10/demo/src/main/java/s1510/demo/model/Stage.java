@@ -39,9 +39,9 @@ public class Stage {
     @ManyToOne
     @JoinColumn(name = "team_b_id")
     @JsonIgnore
-    private TeamManager teamB;
+    private Team teamB;
     @ManyToOne
     @JoinColumn(name = "team_a_id")
     @JsonIgnore
-    private TeamManager teamA;
+    private Team teamA;
 }

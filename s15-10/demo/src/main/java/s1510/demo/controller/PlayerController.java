@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import s1510.demo.dtos.request.PlayerRequest;
 import s1510.demo.dtos.response.PlayerResponse;
-import s1510.demo.dtos.response.TeamManagerResponse;
 import s1510.demo.exception.FileNotExistException;
 import s1510.demo.service.PlayerService;
 

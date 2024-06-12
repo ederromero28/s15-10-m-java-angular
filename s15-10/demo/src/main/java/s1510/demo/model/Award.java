@@ -28,5 +28,5 @@ public class Award {
     private Player player;
     @ManyToOne
     @JoinColumn(name = "team_id", referencedColumnName = "id")
-    private TeamManager teamManager;
+    private Team team;
 }

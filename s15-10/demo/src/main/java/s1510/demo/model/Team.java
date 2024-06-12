@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.context.annotation.Profile;
-import s1510.demo.enums.Role;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,8 +17,8 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "TEAM_MANAGERS")
-public class TeamManager implements Serializable {
+@Table(name = "TEAMS")
+public class Team implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,13 +46,13 @@ public class TeamManager implements Serializable {
     @JsonIgnore
     private List<Player> players = new ArrayList<>();
 
-    public TeamManager(String email,
-                       String password,
-                       Boolean isPresent,
-                       String name,
-                       ImageEntity logo,
-                       List<Award> awards,
-                       List<Player> players) {
+    public Team(String email,
+                String password,
+                Boolean isPresent,
+                String name,
+                ImageEntity logo,
+                List<Award> awards,
+                List<Player> players) {
 
         this.email = email;
         this.password = password;

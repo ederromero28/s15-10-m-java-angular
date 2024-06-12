@@ -19,8 +19,7 @@ public record TeamManagerResponse(Long id,
                 teamManager.getName(),
                 teamManager.getEmail(),
                 awards,
-                new ImageEntityResponse(
-                        teamManager.getLogo()),
+                new ImageEntityResponse(teamManager.getLogo()),
                 teamManager.getPlayers().stream().map(PlayerResponse::new).toList());
     }
 
@@ -29,9 +28,11 @@ public record TeamManagerResponse(Long id,
                 teamManager.getName(),
                 teamManager.getEmail(),
                 null,
-                new ImageEntityResponse(
-                        teamManager.getLogo()),
-                teamManager.getPlayers().stream().map(PlayerResponse::new).toList());
+                null,
+//                new ImageEntityResponse(teamManager.getLogo()),
+                null
+//                teamManager.getPlayers().stream().map(PlayerResponse::new).toList()
+        );
     }
 
 }

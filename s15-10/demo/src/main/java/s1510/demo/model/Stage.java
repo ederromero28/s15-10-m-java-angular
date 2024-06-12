@@ -23,25 +23,25 @@ public class Stage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "stage_type")
-    @JsonIgnore
     @Enumerated(EnumType.STRING)
+    @JsonIgnore
     private StageType stageType;
 //    @ManyToOne
 //    @JoinColumn(name = "competition_id", referencedColumnName = "id")
 //    private Competition competitionReference;
     // 1 Stage puede tener muchos Matchs
-    @JsonIgnore
     @OneToMany()
+    @JsonIgnore
     private List<Match> matchs = new ArrayList<>();
-    @JsonIgnore
     @Column(name = "winner")
+    @JsonIgnore
     private String winner;
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "team_a_id")
-    private TeamManager teamA;
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "team_b_id")
+    @JsonIgnore
     private TeamManager teamB;
+    @ManyToOne
+    @JoinColumn(name = "team_a_id")
+    @JsonIgnore
+    private TeamManager teamA;
 }

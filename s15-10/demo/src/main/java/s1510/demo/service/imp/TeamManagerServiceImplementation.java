@@ -70,7 +70,7 @@ public class TeamManagerServiceImplementation implements TeamManagerService {
         newTeamManager.setName(saveTeamManager.name());
         newTeamManager.setEmail(saveTeamManager.email());
         newTeamManager.setIsPresent(true);
-        newTeamManager.setRole(Role.TEAM_MANAGER);
+//        newTeamManager.setRole(Role.TEAM_MANAGER);
 
         teamManagerRepository.save(newTeamManager);
 

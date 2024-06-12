@@ -1,5 +1,7 @@
 package s1510.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.context.annotation.Profile;
@@ -27,19 +29,22 @@ public class TeamManager implements Serializable {
     private String email;
     @Column(name = "password")
     private String password;
-    @Column(name = "role")
-    @Enumerated(EnumType.STRING)
-    private Role role;
+//    @Column(name = "role")
+//    @Enumerated(EnumType.STRING)
+//    private Role role;
     @Column(name = "is_present")
     private Boolean isPresent;
     @Column(name = "name")
     private String name;
     @OneToOne
     @JoinColumn(name = "logo_id", referencedColumnName = "id")
+    @JsonIgnore
     private ImageEntity logo;
     @OneToMany
+    @JsonIgnore
     private List<Award> awards = new ArrayList<>();
     @OneToMany
+    @JsonIgnore
     private List<Player> players = new ArrayList<>();
 
     public TeamManager(String email,
@@ -53,7 +58,7 @@ public class TeamManager implements Serializable {
         this.email = email;
         this.password = password;
         this.isPresent = isPresent;
-        this.role = Role.TEAM_MANAGER;
+//        this.role = Role.TEAM_MANAGER;
         this.name = name;
         this.logo = logo;
         this.awards = awards;

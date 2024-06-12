@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.context.annotation.Profile;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Builder
-public class Competition {
+public class Competition implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +34,7 @@ public class Competition {
     @Column(name = "date_end")
     private LocalDate dateEnd;
     @OneToMany
+    @JsonIgnore
     private Set<Award> awards;
     @OneToMany
     private List<Stage> stages = new ArrayList<>();

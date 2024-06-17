@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Profile;
 
 public record SportRequest(
         @NotBlank String name,
-        @NotNull int teamSize,
-        @NotNull int rounds) {
+        @NotNull Integer teamSize,
+        @NotNull Integer rounds) {
 }

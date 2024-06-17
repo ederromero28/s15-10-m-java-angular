@@ -55,9 +55,15 @@ public class SportServiceImplementation implements SportService {
     public SportResponse update(Long id, SportRequest sportRequest) {
         Sport sportDB = sportRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Sport not found with id: " + id));
-        sportDB.setName(sportRequest.name());
-        sportDB.setTeamSize(sportRequest.teamSize());
-        sportDB.setRounds(sportRequest.rounds());
+        if (sportRequest.name() != null) {
+            sportDB.setName(sportRequest.name());
+        }
+        if (sportRequest.teamSize() != null) {
+            sportDB.setTeamSize(sportRequest.teamSize());
+        }
+        if (sportRequest.rounds() != null) {
+            sportDB.setRounds(sportRequest.rounds());
+        }
         Sport updateSport = sportRepository.save(sportDB);
         return new SportResponse(updateSport);
     }

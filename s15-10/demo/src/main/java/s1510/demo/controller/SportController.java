@@ -33,8 +33,7 @@ public class SportController {
 
     @GetMapping("/{id}")
     public ResponseEntity<SportResponse> findById(@PathVariable Long id){
-        SportResponse sport = sportService.findById(id);
-        return new ResponseEntity<>(sport, HttpStatus.OK);
+        return ResponseEntity.ok(sportService.findById(id));
     }
 
     @PostMapping
